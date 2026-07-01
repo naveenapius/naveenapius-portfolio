@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#161710">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shipping Enduro Edge — Naveena Pius">
+<meta property="og:description" content="How I built a live booking and lead-gen platform for an off-road events company — and kept it lean.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Cantarell:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#FFFFE8;color:#161710;font-family:Cantarell,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:#AACB73;color:#161710}
+  a{color:inherit}
+  @keyframes kfUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+
+<!-- reading progress -->
+<div style="position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:transparent;pointer-events:none">
+  <div id="__progress" style="height:100%;width:0%;background:#AACB73;transition:width .08s linear"></div>
+</div>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,232,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid #161710">
+  <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:14px clamp(20px,5vw,64px)">
+    <a href="Homepage.dc.html" style="font:700 14px/1 'JetBrains Mono',monospace;letter-spacing:.06em;text-decoration:none">NAVEENA&nbsp;PIUS</a>
+    <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap;font:600 11.5px/1 'JetBrains Mono',monospace;letter-spacing:.14em">
+      <a href="Homepage.dc.html#work" style="text-decoration:none">WORK</a>
+      <a href="Media.dc.html" style="text-decoration:none">MEDIA</a>
+      <a href="Blog.dc.html" style="text-decoration:none;color:#6E8B3D">WRITING</a>
+      <a href="Homepage.dc.html#contact" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#161710;color:#FFFFE8;padding:9px 14px;border-radius:4px">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<div style="position:relative;overflow:hidden;background:#FFFFE8">
+  <sc-if value="{{ gridTexture }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;top:0;left:0;right:0;height:520px;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(22,23,16,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(22,23,16,.045) 1px,transparent 1px);background-size:36px 36px"></div>
+  </sc-if>
+  <div style="position:absolute;top:-120px;right:-120px;width:320px;height:320px;background:#CDE990;transform:rotate(45deg);z-index:0"></div>
+
+  <div style="position:relative;z-index:1;max-width:760px;margin:0 auto;padding:clamp(26px,4vw,44px) clamp(20px,5vw,32px) clamp(56px,7vw,88px)">
+
+    <a href="Blog.dc.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#4A4B3E;margin-bottom:clamp(26px,3.5vw,40px)"><span>←</span> ALL WRITING</a>
+
+    <article data-reveal>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">BUILD LOG</span>
+        <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">NEXT.JS</span>
+      </div>
+      <h1 style="font:700 clamp(32px,5.6vw,54px)/1.06 Cantarell,sans-serif;margin:0 0 22px;text-wrap:balance">Shipping Enduro Edge: bookings without the bloat</h1>
+      <div style="display:flex;align-items:center;gap:12px;font:500 12px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78;margin-bottom:clamp(28px,3.5vw,38px)"><span>JUN 2026</span><span style="width:5px;height:5px;border-radius:50%;background:#AACB73"></span><span>8 MIN READ</span></div>
+
+      <image-slot id="post-hero" shape="rect" placeholder="Cover — Enduro Edge build (16:9)" style="display:block;width:100%;aspect-ratio:16/9;border:2px solid #161710;border-radius:8px;box-shadow:7px 7px 0 #161710;margin-bottom:clamp(34px,4.2vw,48px)"></image-slot>
+
+      <p style="font-size:clamp(19px,2.2vw,22px);line-height:1.55;color:#161710;margin:0 0 26px;text-wrap:pretty">When an off-road events company asked me for "a website," what they actually needed was a way to fill riding slots and stop chasing payments over WhatsApp. Enduro Edge is what happened once I ignored the brief and solved that instead.</p>
+      <p style="font-size:18px;line-height:1.75;color:#2C2D22;margin:0 0 24px">The temptation on a project like this is to build the thing that demos well: a slick marketing site with parallax and a blog nobody asked for. But the client's pain was operational, not cosmetic. Riders would DM to ask about dates, go quiet, and half of them never paid. Every unbooked slot was money left on the trail.</p>
+
+      <h2 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(26px,3.8vw,36px);line-height:1;margin:46px 0 18px">The real problem</h2>
+      <p style="font-size:18px;line-height:1.75;color:#2C2D22;margin:0 0 24px">So I reframed it. The site had exactly two jobs: take a booking with payment up front, and capture a lead when someone wasn't ready to commit. Everything else — galleries, testimonials, the founder's story — was allowed to exist only if it pushed toward one of those two actions.</p>
+
+      <blockquote style="border-left:4px solid #AACB73;padding:4px 0 4px 22px;margin:34px 0;font-size:clamp(19px,2.4vw,24px);line-height:1.45;font-style:italic;color:#161710;text-wrap:balance">Every feature I said no to is a feature I don't have to debug at 11 p.m. before a ride weekend.</blockquote>
+
+      <h2 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(26px,3.8vw,36px);line-height:1;margin:46px 0 18px">What I built</h2>
+      <p style="font-size:18px;line-height:1.75;color:#2C2D22;margin:0 0 20px">The stack stayed deliberately boring — boring is exactly what you want when real money moves through it:</p>
+      <div style="display:flex;flex-direction:column;gap:14px;margin:0 0 28px">
+        <div style="display:flex;gap:14px"><span style="flex:none;width:9px;height:9px;margin-top:8px;background:#AACB73;transform:rotate(45deg)"></span><span style="font-size:18px;line-height:1.65;color:#2C2D22"><b>Next.js on Vercel</b> — server-rendered pages, one deploy pipeline, no server to babysit.</span></div>
+        <div style="display:flex;gap:14px"><span style="flex:none;width:9px;height:9px;margin-top:8px;background:#AACB73;transform:rotate(45deg)"></span><span style="font-size:18px;line-height:1.65;color:#2C2D22"><b>Sanity</b> for event content the client edits themselves — dates, prices, photos.</span></div>
+        <div style="display:flex;gap:14px"><span style="flex:none;width:9px;height:9px;margin-top:8px;background:#AACB73;transform:rotate(45deg)"></span><span style="font-size:18px;line-height:1.65;color:#2C2D22"><b>Razorpay + Upstash</b> — payments, with an idempotency key so a double-tap never double-charges.</span></div>
+        <div style="display:flex;gap:14px"><span style="flex:none;width:9px;height:9px;margin-top:8px;background:#AACB73;transform:rotate(45deg)"></span><span style="font-size:18px;line-height:1.65;color:#2C2D22"><b>NocoDB</b> as the ops view, so the team reads bookings in a spreadsheet-shaped thing they already understand.</span></div>
+      </div>
+
+      <h2 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(26px,3.8vw,36px);line-height:1;margin:46px 0 18px">What I'd do again</h2>
+      <p style="font-size:18px;line-height:1.75;color:#2C2D22;margin:0 0 24px">Validate every booking on the server, treat the payment webhook as the source of truth, and log enough that when something looks wrong you can answer "what happened" without redeploying. None of it is clever. All of it is why the phone doesn't ring on ride weekends.</p>
+
+      <!-- author -->
+      <div style="display:flex;align-items:center;gap:16px;margin-top:clamp(40px,5vw,56px);padding-top:26px;border-top:2px solid #161710">
+        <div style="flex:none;width:52px;height:52px;border:2px solid #161710;border-radius:8px;overflow:hidden">
+          <img src="icon-192.png" alt="Naveena Pius" style="width:100%;height:100%;display:block;object-fit:cover">
+        </div>
+        <div>
+          <div style="font:700 15px/1.2 Cantarell,sans-serif">Naveena Pius</div>
+          <div style="font:500 11.5px/1.5 'JetBrains Mono',monospace;letter-spacing:.04em;color:#6E8B3D">Engineer &amp; rider — building from inside the industry.</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- ===================== KEEP READING (prev / next) ===================== -->
+<section style="background:#161710;color:#FFFFE8">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,5vw,64px)">
+    <div style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.22em;color:#CDE990;margin-bottom:clamp(24px,3vw,34px)">KEEP READING</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,32px)">
+      <a href="Blog.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;background:#1F2018;border:2px solid rgba(255,255,255,.16);border-radius:8px;padding:clamp(22px,2.6vw,30px);transition:border-color .2s,transform .2s" style-hover="border-color:#AACB73;transform:translateY(-2px)">
+        <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8C8D78">← PREVIOUS</span>
+        <span style="font:700 19px/1.3 Cantarell,sans-serif;color:#FFFFE8">What 6,000 km to Ladakh taught me about prep</span>
+        <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78">RIDING · 11 MIN</span>
+      </a>
+      <a href="Blog.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;background:#1F2018;border:2px solid rgba(255,255,255,.16);border-radius:8px;padding:clamp(22px,2.6vw,30px);text-align:right;align-items:flex-end;transition:border-color .2s,transform .2s" style-hover="border-color:#AACB73;transform:translateY(-2px)">
+        <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8C8D78">NEXT →</span>
+        <span style="font:700 19px/1.3 Cantarell,sans-serif;color:#FFFFE8">Data pipelines that don't wake you at 3 a.m.</span>
+        <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78">DEV · 7 MIN</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer style="background:#161710;color:#FFFFE8;border-top:1px solid rgba(255,255,255,.14)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(48px,6vw,76px) clamp(20px,5vw,64px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px">
+      <div style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-size:clamp(40px,7vw,76px);line-height:.9;color:#FFFFE8">Naveena<br>Pius</div>
+      <div style="text-align:right">
+        <div style="font:600 11px/1.8 'JetBrains Mono',monospace;letter-spacing:.12em;color:#CDE990">ENGINEER&nbsp;//&nbsp;RIDER&nbsp;//&nbsp;INDIA</div>
+        <a href="Blog.dc.html" style="display:inline-block;font:500 11px/1.8 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22);margin-top:4px">Back to writing →</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-top:clamp(36px,5vw,56px);padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78">
+      <span>© 2026 Naveena Pius</span>
+      <span style="color:#CDE990">// END</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:1400},&quot;gridTexture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Decoration&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    // reading progress bar
+    this._onScroll = () => {
+      try {
+        const bar = document.getElementById('__progress');
+        if (!bar) return;
+        const h = document.documentElement;
+        const max = (h.scrollHeight - h.clientHeight) || 1;
+        const pct = Math.min(100, Math.max(0, (h.scrollTop || document.body.scrollTop) / max * 100));
+        bar.style.width = pct + '%';
+      } catch (e) {}
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    // reveal
+    try {
+      const els = Array.from(document.querySelectorAll('[data-reveal]'));
+      els.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      els.forEach((el) => io.observe(el));
+      setTimeout(() => {
+        els.forEach((el) => { if (getComputedStyle(el).opacity !== '1') { el.style.opacity = '1'; el.style.transform = 'none'; } });
+      }, 1600);
+    } catch (err) {}
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  renderVals() {
+    return { gridTexture: this.props.gridTexture ?? true };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#161710">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Naveena Pius — Web Developer">
+<meta property="og:description" content="Web developer and rider. Building fast, honest sites — and making motorcycling accessible one ride at a time.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Cantarell:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#FFFFE8;color:#161710;font-family:Cantarell,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:#AACB73;color:#161710}
+  a{color:inherit}
+  @keyframes kfUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes kfMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes kfPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.65)}}
+  @keyframes kfArrow{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,232,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid #161710">
+  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:14px clamp(20px,5vw,72px)">
+    <a href="#top" style="font:700 14px/1 'JetBrains Mono',monospace;letter-spacing:.06em;text-decoration:none">NAVEENA&nbsp;PIUS</a>
+    <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap;font:600 11.5px/1 'JetBrains Mono',monospace;letter-spacing:.14em">
+      <a href="#work" style="text-decoration:none">WORK</a>
+      <a href="#skills" style="text-decoration:none">SKILLS</a>
+      <a href="#about" style="text-decoration:none">ABOUT</a>
+      <a href="Media.dc.html" style="display:inline-flex;align-items:center;gap:7px;text-decoration:none;background:#AACB73;color:#161710;padding:9px 14px;border-radius:4px;box-shadow:3px 3px 0 #161710">MEDIA <span style="font-size:13px">↗</span></a>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#161710;color:#FFFFE8;padding:9px 14px;border-radius:4px">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="top" style="position:relative;overflow:hidden;background:#FFFFE8">
+  <sc-if value="{{ gridTexture }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(22,23,16,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(22,23,16,.045) 1px,transparent 1px);background-size:36px 36px"></div>
+  </sc-if>
+  <div style="position:absolute;top:-110px;right:-110px;width:380px;height:380px;background:#CDE990;transform:rotate(45deg);z-index:0"></div>
+  <div style="position:absolute;top:-110px;right:74px;width:48px;height:380px;background:#AACB73;transform:rotate(45deg);transform-origin:top;z-index:0"></div>
+
+  <div style="position:relative;z-index:1;max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,60px);padding:clamp(48px,7vw,92px) clamp(20px,5vw,72px) clamp(64px,8vw,104px)">
+    <div style="flex:1 1 440px;min-width:300px">
+      <h1 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(42px,6.4vw,76px);line-height:.92;letter-spacing:.01em;margin:0;animation:kfUp .6s .12s both">I build<br>what you<br>actually <span style="display:inline-block;background:#AACB73;color:#161710;padding:0 .12em;transform:rotate(-2.5deg);box-shadow:5px 5px 0 #161710">need</span></h1>
+      <p style="font-size:clamp(15px,1.7vw,18px);line-height:1.55;color:#4A4B3E;max-width:470px;margin:26px 0 0;animation:kfUp .6s .2s both">I'm a software engineer building the data pipelines and annotation systems that keep AI products running cleanly. Web development is my side gig — same rigor, smaller canvas.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;animation:kfUp .6s .28s both">
+        <a href="#contact" style="display:inline-flex;align-items:center;gap:9px;background:#161710;color:#FFFFE8;font:600 12.5px/1 'JetBrains Mono',monospace;letter-spacing:.06em;padding:16px 24px;border-radius:4px;text-decoration:none">REACH OUT TO ME <span style="font-size:15px">→</span></a>
+        <a href="#contact" style="display:inline-flex;align-items:center;background:transparent;color:#161710;font:600 12.5px/1 'JetBrains Mono',monospace;letter-spacing:.06em;padding:16px 24px;border:2px solid #161710;border-radius:4px;text-decoration:none">COLLABORATE</a>
+      </div>
+    </div>
+
+    <div style="position:relative;flex:1 1 340px;min-width:300px;min-height:clamp(420px,44vw,560px);animation:kfUp .6s .34s both">
+      <image-slot id="hero-1a" bare shape="rect" fit="contain" position="50% 100%" placeholder="Drop cutout PNG — you on the bike, bg removed" style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:1;display:block;width:clamp(300px,38vw,440px);height:clamp(390px,50vw,560px);background:transparent;filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(2px -2px 0 #fff) drop-shadow(-2px -2px 0 #fff) drop-shadow(7px 12px 13px rgba(22,23,16,.32))"></image-slot>
+    </div>
+  </div>
+</section>
+
+<!-- ticker -->
+<sc-if value="{{ marquee }}" hint-placeholder-val="{{ true }}">
+  <div style="background:#161710;overflow:hidden;border-top:2px solid #161710;border-bottom:2px solid #161710">
+    <div style="display:flex;white-space:nowrap;animation:kfMarq 24s linear infinite;padding:13px 0;font:600 12.5px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#CDE990">
+      <span>NEXT.JS&nbsp;&nbsp;✦&nbsp;&nbsp;REACT&nbsp;&nbsp;✦&nbsp;&nbsp;TAILWIND&nbsp;&nbsp;✦&nbsp;&nbsp;NODE&nbsp;&nbsp;✦&nbsp;&nbsp;PYTHON&nbsp;&nbsp;✦&nbsp;&nbsp;GCP&nbsp;&nbsp;✦&nbsp;&nbsp;AWS&nbsp;&nbsp;✦&nbsp;&nbsp;SANITY&nbsp;&nbsp;✦&nbsp;&nbsp;PREFECT&nbsp;&nbsp;✦&nbsp;&nbsp;VERCEL&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+      <span>NEXT.JS&nbsp;&nbsp;✦&nbsp;&nbsp;REACT&nbsp;&nbsp;✦&nbsp;&nbsp;TAILWIND&nbsp;&nbsp;✦&nbsp;&nbsp;NODE&nbsp;&nbsp;✦&nbsp;&nbsp;PYTHON&nbsp;&nbsp;✦&nbsp;&nbsp;GCP&nbsp;&nbsp;✦&nbsp;&nbsp;AWS&nbsp;&nbsp;✦&nbsp;&nbsp;SANITY&nbsp;&nbsp;✦&nbsp;&nbsp;PREFECT&nbsp;&nbsp;✦&nbsp;&nbsp;VERCEL&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" style="background:#FFFFE8;scroll-margin-top:72px">
+  <div data-reveal style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,64px)">
+    <div style="flex:0 0 auto;width:240px;max-width:100%">
+      <h2 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:.96;margin:0">Built from inside the industry</h2>
+    </div>
+    <div style="flex:1 1 440px;min-width:300px;align-self:center">
+      <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.65;color:#2C2D22;margin:0 0 22px">I work at the intersection of complex systems and human needs — figuring out exactly what's required, then building precisely that. By day I work on data pipelines and annotation systems that keep AI products running cleanly. On the side I build websites for businesses that need a technical partner who actually listens.</p>
+      <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.65;color:#2C2D22;margin:0">I'm also deeply embedded in the motorsports world as a content creator — which is how I ended up building <span style="background:#CDE990;padding:0 .14em;font-weight:700">Enduro Edge</span>, a live booking and lead-generation platform for an off-road events company. I don't just build for industries I understand. I build from inside them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS (spec board) ===================== -->
+<section id="skills" style="background:#161710;color:#FFFFE8;scroll-margin-top:72px">
+  <div data-reveal style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,5vw,72px)">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,56px)">
+      <div>
+        <h2 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(34px,5vw,58px);line-height:.95;margin:0">Skills</h2>
+      </div>
+      <span style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.08em;color:#8C8D78;max-width:300px;text-align:right">The tools I reach for, grouped by where they live.</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(28px,3.4vw,48px)">
+      <div>
+        <div style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:#CDE990;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14)">ENGINEERING</div>
+        <div style="display:flex;flex-wrap:wrap;gap:9px">
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Python</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">GCP</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">AWS</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Prefect</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">REST APIs</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Codefresh</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Linux</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">GitHub</span>
+        </div>
+      </div>
+      <div>
+        <div style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:#CDE990;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14)">WEB</div>
+        <div style="display:flex;flex-wrap:wrap;gap:9px">
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Next.js</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">React</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Tailwind CSS</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Node.js</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Vercel</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Netlify</span>
+        </div>
+      </div>
+      <div>
+        <div style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:#CDE990;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14)">DATA &amp; INTEGRATIONS</div>
+        <div style="display:flex;flex-wrap:wrap;gap:9px">
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Sanity</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">NocoDB</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Upstash Redis</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Razorpay</span>
+          <span style="font:500 12.5px/1 'JetBrains Mono',monospace;border:1.5px solid rgba(255,255,255,.2);color:#FFFFE8;padding:9px 13px;border-radius:5px">Umami</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MY WORK ===================== -->
+<section id="work" style="background:#FFFFE8;scroll-margin-top:72px">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,5vw,72px)">
+    <div data-reveal style="margin-bottom:clamp(36px,5vw,56px)">
+      <h2 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(34px,5vw,58px);line-height:.95;margin:0">My Work</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(26px,3.4vw,44px)">
+
+      <!-- Enduro Edge -->
+      <article data-reveal style="background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:7px 7px 0 #161710;overflow:hidden;display:flex;flex-direction:column">
+        <image-slot id="work-enduro" shape="rect" placeholder="Enduro Edge screenshot (16:9)" style="display:block;width:100%;height:auto;aspect-ratio:16/9;border-bottom:2px solid #161710"></image-slot>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <h3 style="font:700 22px/1.15 Cantarell,sans-serif;margin:0 0 8px">Enduro Edge</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:#4A4B3E;margin:0 0 18px">Lead generation and booking platform for an off-road events company.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px">
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Next.js</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Sanity</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Razorpay</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">NocoDB</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Upstash</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Vercel</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:auto;padding-top:18px;border-top:1px solid rgba(22,23,16,.12);font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.04em">
+            <a href="#work" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;border-bottom:2px solid #AACB73;padding-bottom:4px">Live Site <span>→</span></a>
+            <a href="#work" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;border-bottom:2px solid #AACB73;padding-bottom:4px">Blog Post <span>→</span></a>
+            <span style="display:inline-flex;align-items:center;gap:6px;color:rgba(22,23,16,.38);padding-bottom:4px">Case Study <span style="font-size:9px;border:1px solid rgba(22,23,16,.25);padding:2px 5px;border-radius:20px">SOON</span></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- naveenapius.com -->
+      <article data-reveal style="background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:7px 7px 0 #161710;overflow:hidden;display:flex;flex-direction:column">
+        <image-slot id="work-portfolio" shape="rect" placeholder="naveenapius.com screenshot (16:9)" style="display:block;width:100%;height:auto;aspect-ratio:16/9;border-bottom:2px solid #161710"></image-slot>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <h3 style="font:700 22px/1.15 Cantarell,sans-serif;margin:0 0 8px">naveenapius.com</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:#4A4B3E;margin:0 0 18px">Personal portfolio and media presence — designed and built from scratch.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px">
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Next.js</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Sanity</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Tailwind</span>
+            <span style="font:500 11px/1 'JetBrains Mono',monospace;background:rgba(170,203,115,.3);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 9px;border-radius:30px">Netlify</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:auto;padding-top:18px;border-top:1px solid rgba(22,23,16,.12);font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.04em">
+            <a href="#top" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;border-bottom:2px solid #AACB73;padding-bottom:4px">Live Site <span>→</span></a>
+            <span style="display:inline-flex;align-items:center;gap:6px;color:rgba(22,23,16,.38);padding-bottom:4px">Blog Post <span style="font-size:9px;border:1px solid rgba(22,23,16,.25);padding:2px 5px;border-radius:20px">SOON</span></span>
+            <span style="display:inline-flex;align-items:center;gap:6px;color:rgba(22,23,16,.38);padding-bottom:4px">Case Study <span style="font-size:9px;border:1px solid rgba(22,23,16,.25);padding:2px 5px;border-radius:20px">SOON</span></span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ticker -->
+<sc-if value="{{ marquee }}" hint-placeholder-val="{{ true }}">
+  <div style="background:#161710;overflow:hidden;border-top:2px solid #161710;border-bottom:2px solid #161710">
+    <div style="display:flex;white-space:nowrap;animation:kfMarq 20s linear infinite;padding:13px 0;font:600 12.5px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#CDE990">
+      <span>SCOPE&nbsp;&nbsp;✦&nbsp;&nbsp;ARCHITECT&nbsp;&nbsp;✦&nbsp;&nbsp;SHIP&nbsp;&nbsp;✦&nbsp;&nbsp;LISTEN&nbsp;&nbsp;✦&nbsp;&nbsp;BUILD&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+      <span>SCOPE&nbsp;&nbsp;✦&nbsp;&nbsp;ARCHITECT&nbsp;&nbsp;✦&nbsp;&nbsp;SHIP&nbsp;&nbsp;✦&nbsp;&nbsp;LISTEN&nbsp;&nbsp;✦&nbsp;&nbsp;BUILD&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+      <span>SCOPE&nbsp;&nbsp;✦&nbsp;&nbsp;ARCHITECT&nbsp;&nbsp;✦&nbsp;&nbsp;SHIP&nbsp;&nbsp;✦&nbsp;&nbsp;LISTEN&nbsp;&nbsp;✦&nbsp;&nbsp;BUILD&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+      <span>SCOPE&nbsp;&nbsp;✦&nbsp;&nbsp;ARCHITECT&nbsp;&nbsp;✦&nbsp;&nbsp;SHIP&nbsp;&nbsp;✦&nbsp;&nbsp;LISTEN&nbsp;&nbsp;✦&nbsp;&nbsp;BUILD&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" style="background:#FFFFE8;scroll-margin-top:72px">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,5vw,72px)">
+    <div data-reveal style="margin-bottom:clamp(34px,4.5vw,52px);max-width:640px">
+      <h2 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(34px,5vw,58px);line-height:.95;margin:0 0 18px">Let's talk</h2>
+      <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.6;color:#2C2D22;margin:0">I'm always open to good conversations. Find the right door below.</p>
+    </div>
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,40px)">
+
+      <!-- Work with me (lime) -->
+      <div style="position:relative;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:7px 7px 0 #AACB73;padding:clamp(26px,3vw,38px)">
+        <div style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#37491C;margin-bottom:14px"><span style="color:#AACB73">//</span> WORK WITH ME</div>
+        <p style="font-size:16px;line-height:1.55;color:#2C2D22;margin:0 0 24px">Open to freelance projects and full-time roles.</p>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <a href="mailto:hello@naveenapius.com" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:14px 2px;border-top:1px solid rgba(22,23,16,.12);font:600 13px/1 'JetBrains Mono',monospace"><span>Email</span><span style="color:#6E8B3D">→</span></a>
+          <a href="#contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:14px 2px;border-top:1px solid rgba(22,23,16,.12);font:600 13px/1 'JetBrains Mono',monospace"><span>LinkedIn</span><span style="color:#6E8B3D">→</span></a>
+          <a href="#contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:14px 2px;border-top:1px solid rgba(22,23,16,.12);border-bottom:1px solid rgba(22,23,16,.12);font:600 13px/1 'JetBrains Mono',monospace"><span>GitHub</span><span style="color:#6E8B3D">→</span></a>
+        </div>
+      </div>
+
+      <!-- Collaborate with me (pink) -->
+      <div style="position:relative;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:7px 7px 0 #FFD4D4;padding:clamp(26px,3vw,38px)">
+        <div style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#A4566B;margin-bottom:14px"><span style="color:#E89AAA">//</span> COLLABORATE WITH ME</div>
+        <p style="font-size:16px;line-height:1.55;color:#2C2D22;margin:0 0 24px">Open to brand collaborations and content partnerships.</p>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <a href="mailto:media@naveenapius.com" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:14px 2px;border-top:1px solid rgba(22,23,16,.12);font:600 13px/1 'JetBrains Mono',monospace"><span>Email</span><span style="color:#C76A82">→</span></a>
+          <a href="#contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:14px 2px;border-top:1px solid rgba(22,23,16,.12);font:600 13px/1 'JetBrains Mono',monospace"><span>Instagram</span><span style="color:#C76A82">→</span></a>
+          <a href="Media.dc.html" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:14px 2px;border-top:1px solid rgba(22,23,16,.12);border-bottom:1px solid rgba(22,23,16,.12);font:600 13px/1 'JetBrains Mono',monospace"><span>Learn more <span style="color:#C76A82">↗</span></span><span style="color:#C76A82">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer style="background:#161710;color:#FFFFE8">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,76px) clamp(20px,5vw,72px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px">
+      <div>
+        <div style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-size:clamp(40px,7vw,76px);line-height:.9;color:#FFFFE8">Naveena<br>Pius</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font:600 11px/1.8 'JetBrains Mono',monospace;letter-spacing:.12em;color:#CDE990">ENGINEER&nbsp;//&nbsp;INDIA</div>
+        <div style="font:500 11px/1.8 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78">Builder &amp; rider — building from inside the industry.</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-top:clamp(36px,5vw,56px);padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78">
+      <span>© 2026 Naveena Pius</span>
+      <span style="color:#CDE990">// END</span>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gridTexture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Decoration&quot;},&quot;marquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Decoration&quot;},&quot;availableBadge&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Decoration&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    try {
+      const els = Array.from(document.querySelectorAll('[data-reveal]'));
+      els.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach((el) => io.observe(el));
+      // Safety net: never leave anything stuck hidden (failed observer,
+      // static full-page capture, JS hiccup) — force-reveal after a beat.
+      setTimeout(() => {
+        els.forEach((el) => {
+          if (getComputedStyle(el).opacity !== '1') {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          }
+        });
+      }, 1600);
+    } catch (err) { /* reveal is progressive enhancement */ }
+  }
+
+  renderVals() {
+    return {
+      gridTexture: this.props.gridTexture ?? true,
+      marquee: this.props.marquee ?? true,
+      availableBadge: this.props.availableBadge ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

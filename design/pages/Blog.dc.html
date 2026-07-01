@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#161710">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Naveena Pius — Writing">
+<meta property="og:description" content="Thoughts on building, riding, and everything in between.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Cantarell:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#FFFFE8;color:#161710;font-family:Cantarell,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:#AACB73;color:#161710}
+  a{color:inherit}
+  .clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .clamp3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  @keyframes kfUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,232,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid #161710">
+  <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:14px clamp(20px,5vw,64px)">
+    <a href="Homepage.dc.html" style="font:700 14px/1 'JetBrains Mono',monospace;letter-spacing:.06em;text-decoration:none">NAVEENA&nbsp;PIUS</a>
+    <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap;font:600 11.5px/1 'JetBrains Mono',monospace;letter-spacing:.14em">
+      <a href="Homepage.dc.html#work" style="text-decoration:none">WORK</a>
+      <a href="Media.dc.html" style="text-decoration:none">MEDIA</a>
+      <a href="#top" style="text-decoration:none;color:#6E8B3D">WRITING</a>
+      <a href="Homepage.dc.html#contact" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#161710;color:#FFFFE8;padding:9px 14px;border-radius:4px">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HEADING ===================== -->
+<section id="top" style="position:relative;overflow:hidden;background:#FFFFE8">
+  <sc-if value="{{ gridTexture }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(22,23,16,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(22,23,16,.045) 1px,transparent 1px);background-size:36px 36px"></div>
+  </sc-if>
+  <div style="position:absolute;top:-110px;right:-110px;width:340px;height:340px;background:#CDE990;transform:rotate(45deg);z-index:0"></div>
+  <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,64px) clamp(40px,5vw,64px)">
+    <h1 style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(56px,11vw,150px);line-height:.86;letter-spacing:.01em;margin:0;animation:kfUp .6s .12s both">Writing</h1>
+    <p style="font-size:clamp(16px,1.9vw,20px);line-height:1.55;color:#4A4B3E;max-width:520px;margin:26px 0 0;animation:kfUp .6s .2s both">Thoughts on building, riding, and everything in between.</p>
+  </div>
+</section>
+
+<!-- ===================== CARDS GRID ===================== -->
+<section style="background:#FFFFE8">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(32px,4vw,52px) clamp(20px,5vw,64px) clamp(72px,10vw,128px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:clamp(26px,3.2vw,40px)">
+
+      <!-- Post 1 — image cover -->
+      <a data-reveal href="BlogPost.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:6px 6px 0 #161710;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #AACB73">
+        <image-slot id="post-1" shape="rect" placeholder="Cover — Enduro Edge build (16:9)" style="display:block;width:100%;aspect-ratio:16/9;border-bottom:2px solid #161710"></image-slot>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">BUILD LOG</span>
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">NEXT.JS</span>
+          </div>
+          <h2 class="clamp2" style="font:700 22px/1.25 Cantarell,sans-serif;margin:0 0 10px">Shipping Enduro Edge: bookings without the bloat</h2>
+          <p class="clamp3" style="font-size:15px;line-height:1.55;color:#4A4B3E;margin:0 0 22px">How I built a live booking and lead-gen platform for an off-road events company — and the calls I made to keep it lean instead of overengineered.</p>
+          <div style="display:flex;gap:16px;margin-top:auto;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78"><span>JUN 2026</span><span>8 MIN READ</span></div>
+        </div>
+      </a>
+
+      <!-- Post 2 — title block, no image -->
+      <a data-reveal href="BlogPost.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:6px 6px 0 #161710;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #AACB73">
+        <div style="position:relative;background:#161710;color:#FFFFE8;aspect-ratio:16/9;border-bottom:2px solid #161710;padding:clamp(22px,2.6vw,30px);display:flex;align-items:flex-end;overflow:hidden">
+          <div style="position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:#AACB73;opacity:.18;transform:rotate(45deg)"></div>
+          <span style="position:relative;font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-size:clamp(26px,3.6vw,40px);line-height:.95;color:#FFFFE8">6,000 KM<br>to Ladakh</span>
+        </div>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">RIDING</span>
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">TOURING</span>
+          </div>
+          <h2 class="clamp2" style="font:700 22px/1.25 Cantarell,sans-serif;margin:0 0 10px">What 6,000 km to Ladakh taught me about prep</h2>
+          <p class="clamp3" style="font-size:15px;line-height:1.55;color:#4A4B3E;margin:0 0 22px">The longest ride I've done, broken down honestly — what I packed, what I overpacked, and the prep that actually mattered when it counted.</p>
+          <div style="display:flex;gap:16px;margin-top:auto;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78"><span>MAY 2026</span><span>11 MIN READ</span></div>
+        </div>
+      </a>
+
+      <!-- Post 3 — title block, no image -->
+      <a data-reveal href="BlogPost.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:6px 6px 0 #161710;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #AACB73">
+        <div style="position:relative;background:#CDE990;color:#161710;aspect-ratio:16/9;border-bottom:2px solid #161710;padding:clamp(22px,2.6vw,30px);display:flex;align-items:flex-end;overflow:hidden">
+          <div style="position:absolute;top:18px;right:22px;font:600 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:#37491C">// 03:00</div>
+          <span style="position:relative;font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-size:clamp(26px,3.6vw,40px);line-height:.95">Pipelines<br>that sleep</span>
+        </div>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">DEV</span>
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">DATA</span>
+          </div>
+          <h2 class="clamp2" style="font:700 22px/1.25 Cantarell,sans-serif;margin:0 0 10px">Data pipelines that don't wake you at 3 a.m.</h2>
+          <p class="clamp3" style="font-size:15px;line-height:1.55;color:#4A4B3E;margin:0 0 22px">Retries, idempotency, and observability — the unglamorous habits that turn a fragile annotation pipeline into one you can actually trust overnight.</p>
+          <div style="display:flex;gap:16px;margin-top:auto;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78"><span>APR 2026</span><span>7 MIN READ</span></div>
+        </div>
+      </a>
+
+      <!-- Post 4 — image cover -->
+      <a data-reveal href="BlogPost.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:6px 6px 0 #161710;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #AACB73">
+        <image-slot id="post-4" shape="rect" placeholder="Cover — riding gear flat-lay (16:9)" style="display:block;width:100%;aspect-ratio:16/9;border-bottom:2px solid #161710"></image-slot>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">RIDING</span>
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">GEAR</span>
+          </div>
+          <h2 class="clamp2" style="font:700 22px/1.25 Cantarell,sans-serif;margin:0 0 10px">Beginner gear: what's worth it, what isn't</h2>
+          <p class="clamp3" style="font-size:15px;line-height:1.55;color:#4A4B3E;margin:0 0 22px">A no-sponsorship breakdown of the gear new riders actually need first — and the expensive stuff you can comfortably skip until later.</p>
+          <div style="display:flex;gap:16px;margin-top:auto;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78"><span>MAR 2026</span><span>6 MIN READ</span></div>
+        </div>
+      </a>
+
+      <!-- Post 5 — title block, no image -->
+      <a data-reveal href="BlogPost.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:6px 6px 0 #161710;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #AACB73">
+        <div style="position:relative;background:#161710;color:#FFFFE8;aspect-ratio:16/9;border-bottom:2px solid #161710;padding:clamp(22px,2.6vw,30px);display:flex;align-items:flex-end;overflow:hidden">
+          <div style="position:absolute;bottom:-50px;left:-50px;width:170px;height:170px;border:2px dashed rgba(170,203,115,.4);border-radius:50%"></div>
+          <span style="position:relative;font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-size:clamp(26px,3.6vw,40px);line-height:.95;color:#FFFFE8">Scope<br>first</span>
+        </div>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">DEV</span>
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">PROCESS</span>
+          </div>
+          <h2 class="clamp2" style="font:700 22px/1.25 Cantarell,sans-serif;margin:0 0 10px">Scoping a website before writing a line of code</h2>
+          <p class="clamp3" style="font-size:15px;line-height:1.55;color:#4A4B3E;margin:0 0 22px">The questions I ask every client before I open an editor — and why the cheapest change you'll ever make is the one you make on paper.</p>
+          <div style="display:flex;gap:16px;margin-top:auto;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78"><span>FEB 2026</span><span>5 MIN READ</span></div>
+        </div>
+      </a>
+
+      <!-- Post 6 — image cover -->
+      <a data-reveal href="BlogPost.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#FFFFE8;border:2px solid #161710;border-radius:8px;box-shadow:6px 6px 0 #161710;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #AACB73">
+        <image-slot id="post-6" shape="rect" placeholder="Cover — media page screenshot (16:9)" style="display:block;width:100%;aspect-ratio:16/9;border-bottom:2px solid #161710"></image-slot>
+        <div style="padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">BUILD LOG</span>
+            <span style="font:500 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.08em;background:rgba(170,203,115,.32);border:1px solid rgba(170,203,115,.65);color:#37491C;padding:6px 10px;border-radius:30px">MEDIA</span>
+          </div>
+          <h2 class="clamp2" style="font:700 22px/1.25 Cantarell,sans-serif;margin:0 0 10px">Self-hosting reels for a clean media page</h2>
+          <p class="clamp3" style="font-size:15px;line-height:1.55;color:#4A4B3E;margin:0 0 22px">Why I pulled my best reels off the embed and self-hosted them — the playback wins, the file-size tradeoffs, and how I kept it fast.</p>
+          <div style="display:flex;gap:16px;margin-top:auto;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78"><span>JAN 2026</span><span>6 MIN READ</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer style="background:#161710;color:#FFFFE8">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(48px,6vw,76px) clamp(20px,5vw,64px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px">
+      <div style="font-family:'Allerta Stencil',sans-serif;text-transform:uppercase;font-size:clamp(40px,7vw,76px);line-height:.9;color:#FFFFE8">Naveena<br>Pius</div>
+      <div style="text-align:right">
+        <div style="font:600 11px/1.8 'JetBrains Mono',monospace;letter-spacing:.12em;color:#CDE990">ENGINEER&nbsp;//&nbsp;RIDER&nbsp;//&nbsp;INDIA</div>
+        <a href="Homepage.dc.html" style="display:inline-block;font:500 11px/1.8 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22);margin-top:4px">Back to home →</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-top:clamp(36px,5vw,56px);padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8C8D78">
+      <span>© 2026 Naveena Pius</span>
+      <span style="color:#CDE990">// END</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:1000},&quot;gridTexture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Decoration&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    try {
+      const els = Array.from(document.querySelectorAll('[data-reveal]'));
+      els.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1)';
+        el.style.transitionDelay = (Math.min(i, 3) * 0.06) + 's';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+      els.forEach((el) => io.observe(el));
+      setTimeout(() => {
+        els.forEach((el) => {
+          if (getComputedStyle(el).opacity !== '1') {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          }
+        });
+      }, 1600);
+    } catch (err) { /* progressive enhancement */ }
+  }
+
+  renderVals() {
+    return {
+      gridTexture: this.props.gridTexture ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
