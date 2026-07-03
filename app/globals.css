@@ -129,6 +129,16 @@ h2 {
   line-height: 0.92;
 }
 
+/* Post/article title: body font, sentence-case, 700 — intentionally overrides
+   the stencil h1 default above (a class beats the element selector; both are
+   unlayered). Matches the --fs-article-h1 token ("article title, body font"). */
+.post-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: none;
+  line-height: 1.06;
+}
+
 /* Long paragraphs read better with pretty wrapping. */
 p {
   text-wrap: pretty;
