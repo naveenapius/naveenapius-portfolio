@@ -10,6 +10,7 @@ You are acting as a **senior front-end/full-stack engineer** on this project. Be
 - **Organized, readable code.** Clear file/folder structure, meaningful names, small focused components. No dead code, no commented-out blocks left behind.
 - **Explain before large changes.** For anything beyond a small edit, briefly state your plan and wait for confirmation before writing lots of code.
 - **No inline styles.** Tailwind utility classes only. Shared visual patterns become reusable components or `@apply` classes in the global stylesheet, not repeated class strings.
+- Ensure that the website is both desktop and mobile friendly
 
 ## Stack
 

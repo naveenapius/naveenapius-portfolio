@@ -1,26 +1,186 @@
 @import "tailwindcss";
 
+/* =========================================================================
+   DESIGN TOKENS — single source of truth.
+   Change a value here and it updates everywhere (utilities + custom CSS).
+   Reference in JSX as Tailwind utilities: bg-paper, text-ink, font-stencil…
+   Raw hex/values live in :root; @theme maps them to Tailwind utilities.
+   ========================================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Color: neutrals / grounds ---- */
+  --paper: #ffffe8; /* primary light background, text on dark */
+  --ink: #161710; /* primary dark background, body text, borders */
+  --ink-surface: #1f2018; /* raised card on dark sections */
+
+  /* ---- Color: lime (engineering / primary accent) ---- */
+  --lime: #aacb73; /* primary accent — CTAs, highlights, shadows */
+  --lime-light: #cde990; /* decorative diamonds, labels on dark */
+  --lime-text: #6e8b3d; /* small mono accents / active links on paper */
+  --lime-deep: #37491c; /* text inside lime pills */
+
+  /* ---- Color: paper-ground text ---- */
+  --text-body: #2c2d22; /* long-form article body */
+  --text-muted: #4a4b3e; /* secondary / body copy on paper */
+  --mono-muted: #8c8d78; /* meta text, timestamps, footer captions */
+
+  /* ---- Color: pink (media / collaborate voice — collaborate card only) ---- */
+  --pink: #e89aaa;
+  --pink-mid: #c76a82;
+  --pink-deep: #a4566b;
+  --pink-shadow: #ffd4d4; /* offset shadow on the collaborate card only */
+
+  /* ---- Hairlines / borders (derived, kept as tokens for reuse) ---- */
+  --border-ink: rgba(22, 23, 16, 0.28); /* hairline on paper */
+  --border-paper: rgba(255, 255, 255, 0.18); /* hairline on ink */
+
+  /* ---- Shape ---- */
+  --radius-card: 6px;
+  --radius-pill: 30px;
+
+  /* ---- Signature hard offset shadow (solid, no blur) ---- */
+  --shadow-offset: 7px 7px 0;
+
+  /* ---- Fluid type scale (clamp) ---- */
+  --fs-hero: clamp(42px, 6.4vw, 76px); /* homepage <h1> */
+  --fs-hero-xl: clamp(56px, 11vw, 150px); /* blog index <h1> */
+  --fs-h2: clamp(30px, 5vw, 58px); /* section headings (stencil) */
+  --fs-article-h1: clamp(32px, 5.6vw, 54px); /* article title (Cantarell 700) */
+  --fs-lede: clamp(19px, 2.2vw, 22px); /* article lede paragraph */
+  --fs-wordmark: clamp(40px, 7vw, 76px); /* big stencil footer wordmark */
+
+  /* ---- Layout ---- */
+  --container: 1240px; /* max content width */
+  --gutter: clamp(20px, 5vw, 64px); /* page side padding */
+  --section-y: clamp(64px, 9vw, 120px); /* standard section vertical padding */
 }
 
+/* Map raw tokens -> Tailwind theme so utilities are generated.
+   `inline` keeps the raw values in :root above (the edit surface). */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-surface: var(--ink-surface);
+  --color-lime: var(--lime);
+  --color-lime-light: var(--lime-light);
+  --color-lime-text: var(--lime-text);
+  --color-lime-deep: var(--lime-deep);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
+  --color-mono-muted: var(--mono-muted);
+  --color-pink: var(--pink);
+  --color-pink-mid: var(--pink-mid);
+  --color-pink-deep: var(--pink-deep);
+  --color-pink-shadow: var(--pink-shadow);
+
+  /* Fonts (variables supplied by next/font in layout.js) */
+  --font-stencil: var(--font-allerta), "Arial Narrow", sans-serif;
+  --font-body: var(--font-cantarell), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Fluid font-size utilities (text-hero, text-h2, text-lede, …) */
+  --text-hero: var(--fs-hero);
+  --text-hero-xl: var(--fs-hero-xl);
+  --text-h2: var(--fs-h2);
+  --text-article-h1: var(--fs-article-h1);
+  --text-lede: var(--fs-lede);
+  --text-wordmark: var(--fs-wordmark);
+
+  /* Radii */
+  --radius-card: var(--radius-card);
+  --radius-pill: var(--radius-pill);
+
+  /* Animations (see @keyframes below) */
+  --animate-rise: rise 0.6s both; /* hero entrance */
+  --animate-marquee: marquee 24s linear infinite; /* ticker (default) */
+  --animate-marquee-fast: marquee 20s linear infinite; /* ticker (faster) */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================================================================
+   BASE LAYER — global grounds, defaults, selection.
+   ========================================================================= */
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+/* Stencil display headings: uppercase, tight leading, no synthetic weight. */
+h1,
+h2 {
+  font-family: var(--font-stencil);
+  font-weight: 400;
+  text-transform: uppercase;
+  text-wrap: balance;
+  line-height: 0.92;
+}
+
+/* Long paragraphs read better with pretty wrapping. */
+p {
+  text-wrap: pretty;
+}
+
+/* Anchor targets clear the sticky header when jumped to. */
+:target {
+  scroll-margin-top: 6rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Signature faint ink grid behind hero areas (36px cells, ~4.5% opacity). */
+.hero-grid {
+  background-image: linear-gradient(rgba(22, 23, 16, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 23, 16, 0.045) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* =========================================================================
+   KEYFRAMES — referenced by the --animate-* tokens above.
+   ========================================================================= */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Respect reduced-motion: no entrance/scroll movement, no ticker. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
