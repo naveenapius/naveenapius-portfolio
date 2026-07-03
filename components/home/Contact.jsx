@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import ContactCard from "@/components/home/ContactCard";
+import { EMAIL, SOCIAL, mailto } from "@/lib/contact";
 
 export default function Contact() {
   return (
@@ -20,18 +21,19 @@ export default function Contact() {
             label="Work with me"
             description="Open to freelance projects and full-time roles."
             links={[
-              { label: "Email", href: "mailto:hello@naveenapius.com" },
-              { label: "LinkedIn", href: "#" },
-              { label: "GitHub", href: "#" },
+              { label: "Email", href: mailto(EMAIL.work) },
+              { label: "LinkedIn", href: SOCIAL.linkedin.url },
+              { label: "GitHub", href: SOCIAL.github.url },
             ]}
           />
           <ContactCard
+            id="collaborate"
             accent="pink"
             label="Collaborate with me"
             description="Open to brand collaborations and content partnerships."
             links={[
-              { label: "Email", href: "mailto:media@naveenapius.com" },
-              { label: "Instagram", href: "#" },
+              { label: "Email", href: mailto(EMAIL.media) },
+              { label: "Instagram", href: SOCIAL.instagram.url },
               { label: "Learn more", href: "/media", external: true },
             ]}
           />

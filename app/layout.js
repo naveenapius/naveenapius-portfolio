@@ -1,4 +1,4 @@
-import { Allerta_Stencil, Cantarell, JetBrains_Mono } from "next/font/google";
+import { Allerta_Stencil, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 // Display / wordmark — stencil headings (single weight).
@@ -10,10 +10,9 @@ const allertaStencil = Allerta_Stencil({
 });
 
 // Body + card/article titles.
-const cantarell = Cantarell({
-  variable: "--font-cantarell",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -33,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${allertaStencil.variable} ${cantarell.variable} ${jetBrainsMono.variable} h-full`}
+      className={`${allertaStencil.variable} ${geistMono.variable} ${jetBrainsMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

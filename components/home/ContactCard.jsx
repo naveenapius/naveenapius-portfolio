@@ -9,6 +9,7 @@ import Link from "next/link";
  * @param {string} label
  * @param {string} description
  * @param {{ label, href, external?: boolean }[]} links
+ * @param {string} [id] - anchor target, so other pages can deep-link to this card.
  */
 const ACCENT = {
   lime: {
@@ -25,11 +26,12 @@ const ACCENT = {
   },
 };
 
-export default function ContactCard({ accent, label, description, links }) {
+export default function ContactCard({ accent, label, description, links, id }) {
   const a = ACCENT[accent];
 
   return (
     <div
+      id={id}
       className={`relative rounded-[8px] border-2 border-ink bg-paper p-[clamp(26px,3vw,38px)] ${a.shadow}`}
     >
       <div

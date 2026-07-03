@@ -45,7 +45,7 @@
   --fs-hero: clamp(42px, 6.4vw, 76px); /* homepage <h1> */
   --fs-hero-xl: clamp(56px, 11vw, 150px); /* blog index <h1> */
   --fs-h2: clamp(30px, 5vw, 58px); /* section headings (stencil) */
-  --fs-article-h1: clamp(32px, 5.6vw, 54px); /* article title (Cantarell 700) */
+  --fs-article-h1: clamp(32px, 5.6vw, 54px); /* article title (body font, 700) */
   --fs-lede: clamp(19px, 2.2vw, 22px); /* article lede paragraph */
   --fs-wordmark: clamp(40px, 7vw, 76px); /* big stencil footer wordmark */
 
@@ -76,7 +76,8 @@
 
   /* Fonts (variables supplied by next/font in layout.js) */
   --font-stencil: var(--font-allerta), "Arial Narrow", sans-serif;
-  --font-body: var(--font-cantarell), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* Fluid font-size utilities (text-hero, text-h2, text-lede, …) */

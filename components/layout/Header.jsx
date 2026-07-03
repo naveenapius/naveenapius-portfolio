@@ -20,23 +20,35 @@ const linkBase =
 const pillClass = `${linkBase} inline-flex items-center gap-[7px] rounded bg-lime px-[14px] py-[9px] text-ink shadow-[3px_3px_0_var(--ink)] hover:text-ink`;
 const contactClass = `${linkBase} inline-flex items-center gap-[8px] rounded bg-ink px-[14px] py-[9px] text-paper hover:text-paper`;
 
-/** The highlighted lime MEDIA pill (cross-site emphasis). */
-function MediaPill({ onClick }) {
+/**
+ * The highlighted lime cross-site pill. It points at the "other side" of the
+ * site: on the media page it sends visitors to the engineering home ("DEV");
+ * everywhere else it promotes the media page ("MEDIA").
+ *
+ * @param {boolean} toDev - true on the media page (link home, labelled DEV).
+ */
+function CrossPill({ toDev, onClick }) {
   return (
-    <Link href="/media" onClick={onClick} className={pillClass}>
-      MEDIA <span className="text-[13px]">↗</span>
+    <Link
+      href={toDev ? "/" : "/media"}
+      onClick={onClick}
+      className={pillClass}
+    >
+      {toDev ? "DEV" : "MEDIA"} <span className="text-[13px]">↗</span>
     </Link>
   );
 }
 
 /**
  * Sticky site header. On desktop the full mono nav sits inline; below `md` it
- * collapses to a hamburger, leaving only the highlighted MEDIA pill in the bar.
- * Active route is marked lime; on the homepage MEDIA gets the pill treatment.
+ * collapses to a hamburger, leaving only the highlighted cross-site pill in the
+ * bar. Active route is marked lime; the MEDIA slot becomes the cross-site pill
+ * (MEDIA on the homepage, DEV → home on the media page).
  */
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isMedia = pathname.startsWith("/media");
   const [open, setOpen] = useState(false);
 
   const isActive = (match) => match && pathname.startsWith(match);
@@ -64,7 +76,8 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-[clamp(14px,2.2vw,30px)] md:flex">
           {NAV.map(({ label, href, match }) => {
-            if (label === "MEDIA" && isHome) return <MediaPill key={label} />;
+            if (label === "MEDIA" && (isHome || isMedia))
+              return <CrossPill key={label} toDev={isMedia} />;
             return (
               <Link
                 key={label}
@@ -80,9 +93,9 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Mobile bar: keep the highlighted MEDIA pill + a hamburger toggle */}
+        {/* Mobile bar: keep the highlighted cross-site pill + a hamburger toggle */}
         <div className="flex items-center gap-3 md:hidden">
-          <MediaPill onClick={close} />
+          <CrossPill toDev={isMedia} onClick={close} />
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
