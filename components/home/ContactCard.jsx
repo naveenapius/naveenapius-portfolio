@@ -35,7 +35,7 @@ export default function ContactCard({ accent, label, description, links }) {
       <div
         className={`mb-[14px] font-mono text-[11px] font-semibold uppercase tracking-[0.18em] ${a.label}`}
       >
-        <span className={a.marker}>//</span> {label}
+        <span className={a.marker}>{"//"}</span> {label}
       </div>
 
       <p className="mb-6 text-[16px] leading-[1.55] text-text-body">

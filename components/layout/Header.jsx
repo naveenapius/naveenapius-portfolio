@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 /**
  * Site nav — canonical order per DESIGN.md §5.
@@ -16,62 +17,136 @@ const NAV = [
 
 const linkBase =
   "font-mono text-[11.5px] font-semibold uppercase tracking-[0.14em] no-underline transition-colors hover:text-lime-text";
+const pillClass = `${linkBase} inline-flex items-center gap-[7px] rounded bg-lime px-[14px] py-[9px] text-ink shadow-[3px_3px_0_var(--ink)] hover:text-ink`;
+const contactClass = `${linkBase} inline-flex items-center gap-[8px] rounded bg-ink px-[14px] py-[9px] text-paper hover:text-paper`;
+
+/** The highlighted lime MEDIA pill (cross-site emphasis). */
+function MediaPill({ onClick }) {
+  return (
+    <Link href="/media" onClick={onClick} className={pillClass}>
+      MEDIA <span className="text-[13px]">↗</span>
+    </Link>
+  );
+}
 
 /**
- * Sticky site header: translucent paper, blurred, 2px ink underline.
- * Active section is marked lime; on the homepage the MEDIA item becomes a
- * lime pill with an offset shadow (cross-site emphasis).
+ * Sticky site header. On desktop the full mono nav sits inline; below `md` it
+ * collapses to a hamburger, leaving only the highlighted MEDIA pill in the bar.
+ * Active route is marked lime; on the homepage MEDIA gets the pill treatment.
  */
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const [open, setOpen] = useState(false);
+
+  const isActive = (match) => match && pathname.startsWith(match);
+  const close = () => setOpen(false);
+
+  // Close the mobile menu on Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/85 backdrop-blur-[10px]">
-      <div className="mx-auto flex max-w-[var(--container)] flex-wrap items-center justify-between gap-[18px] px-[var(--gutter)] py-[14px]">
+      <div className="mx-auto flex max-w-[var(--container)] items-center justify-between gap-[18px] px-[var(--gutter)] py-[14px]">
         <Link
           href="/"
+          onClick={close}
           className="font-mono text-[14px] font-bold leading-none tracking-[0.06em] text-ink no-underline"
         >
           NAVEENA&nbsp;PIUS
         </Link>
 
-        <nav className="flex flex-wrap items-center gap-[clamp(14px,2.2vw,30px)]">
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-[clamp(14px,2.2vw,30px)] md:flex">
           {NAV.map(({ label, href, match }) => {
-            const isActive = match && pathname.startsWith(match);
-
-            // Homepage: MEDIA gets the lime-pill emphasis treatment.
-            if (label === "MEDIA" && isHome) {
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  className={`${linkBase} inline-flex items-center gap-[7px] rounded bg-lime px-[14px] py-[9px] text-ink shadow-[3px_3px_0_var(--ink)] hover:text-ink`}
-                >
-                  {label} <span className="text-[13px]">↗</span>
-                </Link>
-              );
-            }
-
+            if (label === "MEDIA" && isHome) return <MediaPill key={label} />;
             return (
               <Link
                 key={label}
                 href={href}
-                className={`${linkBase} ${isActive ? "text-lime-text" : "text-ink"}`}
+                className={`${linkBase} ${isActive(match) ? "text-lime-text" : "text-ink"}`}
               >
                 {label}
               </Link>
             );
           })}
-
-          <Link
-            href="/#contact"
-            className={`${linkBase} inline-flex items-center gap-[8px] rounded bg-ink px-[14px] py-[9px] text-paper hover:text-paper`}
-          >
+          <Link href="/#contact" className={contactClass}>
             CONTACT
           </Link>
         </nav>
+
+        {/* Mobile bar: keep the highlighted MEDIA pill + a hamburger toggle */}
+        <div className="flex items-center gap-3 md:hidden">
+          <MediaPill onClick={close} />
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            className="inline-flex h-10 w-10 items-center justify-center rounded border-2 border-ink text-ink"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              {open ? (
+                <>
+                  <line x1="3" y1="3" x2="15" y2="15" />
+                  <line x1="15" y1="3" x2="3" y2="15" />
+                </>
+              ) : (
+                <>
+                  <line x1="2" y1="5" x2="16" y2="5" />
+                  <line x1="2" y1="9" x2="16" y2="9" />
+                  <line x1="2" y1="13" x2="16" y2="13" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {/* Mobile dropdown panel */}
+      {open && (
+        <nav
+          id="mobile-menu"
+          className="border-t-2 border-ink bg-paper md:hidden"
+        >
+          <div className="mx-auto flex max-w-[var(--container)] flex-col px-[var(--gutter)] py-2">
+            {NAV.filter((n) => n.label !== "MEDIA").map(({ label, href, match }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={close}
+                className={`border-b border-ink/10 py-4 font-mono text-[13px] font-semibold uppercase tracking-[0.14em] no-underline ${
+                  isActive(match) ? "text-lime-text" : "text-ink"
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+            <Link
+              href="/#contact"
+              onClick={close}
+              className={`${contactClass} mt-4 justify-center py-4 text-[13px]`}
+            >
+              CONTACT
+            </Link>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
