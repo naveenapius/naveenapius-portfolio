@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 
 /**
  * Landing hero: stencil headline with a lime highlight word, intro, two CTAs,
@@ -46,17 +46,15 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Portrait cut-out.
-            IMAGE: drop a transparent-background PNG at /public/hero-portrait.png
-            (you on the bike, background removed). When wiring the real image,
-            apply the paper edge + drop shadow, e.g.:
-              filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff)
-                      drop-shadow(0 -3px 0 #fff) drop-shadow(7px 12px 13px rgba(22,23,16,.32)); */}
+        {/* Portrait cut-out: transparent PNG with a paper edge + drop shadow. */}
         <div className="animate-rise relative min-h-[clamp(420px,44vw,560px)] min-w-[300px] flex-[1_1_340px] [animation-delay:340ms]">
           <div className="absolute bottom-0 left-1/2 h-[clamp(390px,50vw,560px)] w-[clamp(300px,38vw,440px)] -translate-x-1/2">
-            <ImagePlaceholder
-              filename="hero-portrait.png"
-              label="Portrait cut-out — transparent PNG"
+            <Image
+              src="/hero-portrait.png"
+              alt="Portrait of Naveena Pius"
+              fill
+              priority
+              className="scale-[1.56] object-contain object-center [filter:drop-shadow(3px_0_0_#fff)_drop-shadow(-3px_0_0_#fff)_drop-shadow(0_-3px_0_#fff)_drop-shadow(7px_12px_13px_rgba(22,23,16,0.32))]"
             />
           </div>
         </div>
