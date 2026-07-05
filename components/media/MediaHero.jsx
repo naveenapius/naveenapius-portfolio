@@ -57,7 +57,7 @@ export default function MediaHero() {
         <div className="animate-rise relative min-w-[300px] flex-[1_1_360px] [animation-delay:340ms]">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[8px] border-2 border-ink shadow-[9px_9px_0_var(--ink)]">
             <Image
-              src="/media-hero.png"
+              src="/media-hero2.png"
               alt="Naveena riding"
               fill
               priority
