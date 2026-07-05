@@ -17,7 +17,7 @@ const NAV = [
 
 const linkBase =
   "font-mono text-[11.5px] font-semibold uppercase tracking-[0.14em] no-underline transition-colors hover:text-lime-text";
-const pillClass = `${linkBase} inline-flex items-center gap-[7px] rounded bg-lime px-[14px] py-[9px] text-ink shadow-[3px_3px_0_var(--ink)] hover:text-ink`;
+const pillClass = `${linkBase} inline-flex items-center gap-[7px] rounded bg-lime px-[14px] py-[9px] text-ink shadow-[3px_3px_0_var(--ink)] hover:text-ink transition-all duration-150 ease-out hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0_var(--ink)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none`;
 const contactClass = `${linkBase} inline-flex items-center gap-[8px] rounded bg-ink px-[14px] py-[9px] text-paper hover:text-paper`;
 
 /**

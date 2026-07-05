@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import InstagramIcon from "@/components/ui/InstagramIcon";
 import { SOCIAL } from "@/lib/contact";
 
@@ -53,15 +53,15 @@ export default function MediaHero() {
           </div>
         </div>
 
-        {/* Ride photo.
-            IMAGE: drop the photo at /public/media-hero.png (dramatic, high
-            contrast, you clearly visible; 4:5). Swap ImagePlaceholder for
-            next/image with object-cover when wiring the real asset. */}
+        {/* Ride photo */}
         <div className="animate-rise relative min-w-[300px] flex-[1_1_360px] [animation-delay:340ms]">
-          <div className="aspect-[4/5] overflow-hidden rounded-[8px] border-2 border-ink shadow-[9px_9px_0_var(--ink)]">
-            <ImagePlaceholder
-              filename="media-hero.png"
-              label="Best ride photo — dramatic, high contrast (4:5)"
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[8px] border-2 border-ink shadow-[9px_9px_0_var(--ink)]">
+            <Image
+              src="/media-hero.png"
+              alt="Naveena riding"
+              fill
+              priority
+              className="object-cover"
             />
           </div>
         </div>
