@@ -10,7 +10,7 @@ const GROUPS = [
   },
   {
     label: "WEB",
-    items: ["Next.js", "React", "Tailwind CSS", "Node.js", "Vercel", "Netlify"],
+    items: ["Next.js", "React", "Tailwind CSS", "Node.js", "Netlify"],
   },
   {
     label: "DATA & INTEGRATIONS",

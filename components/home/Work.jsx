@@ -1,42 +1,15 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
-import WorkCard from "@/components/home/WorkCard";
+import PostCard from "@/components/blog/PostCard";
+import { client } from "@/lib/sanity/client";
+import { latestPostsQuery } from "@/lib/sanity/queries";
 
-/**
- * Featured projects.
- *
- * NOTE: content is static for now. The "Blog Post" links are placeholders (#);
- * they'll point at real posts once the blog is wired up. Images are placeholders
- * until their PNGs land in /public (see each `image.filename`).
- */
-const PROJECTS = [
-  {
-    title: "Enduro Edge",
-    description:
-      "Lead generation and booking platform for an off-road events company.",
-    image: { filename: "work-enduro-edge.png", label: "Enduro Edge screenshot (16:9)" },
-    tags: ["Next.js", "Sanity", "Razorpay", "NocoDB", "Upstash", "Vercel"],
-    links: [
-      { label: "Live Site", href: "#" },
-      { label: "Blog Post", href: "#" },
-      { label: "Case Study", soon: true },
-    ],
-  },
-  {
-    title: "naveenapius.com",
-    description:
-      "Personal portfolio and media presence — designed and built from scratch.",
-    image: { filename: "work-portfolio.png", label: "naveenapius.com screenshot (16:9)" },
-    tags: ["Next.js", "Sanity", "Tailwind", "Netlify"],
-    links: [
-      { label: "Live Site", href: "/" },
-      { label: "Blog Post", soon: true },
-      { label: "Case Study", soon: true },
-    ],
-  },
-];
+// ISR: new/updated posts appear here without a redeploy.
+export const revalidate = 60;
 
-export default function Work() {
+export default async function Work() {
+  const posts = await client.fetch(latestPostsQuery);
+
   return (
     <section id="work" className="scroll-mt-[72px] bg-paper">
       <Container className="py-[var(--section-y)]">
@@ -44,13 +17,19 @@ export default function Work() {
           <h2 className="text-h2 leading-[0.95]">My Work</h2>
         </Reveal>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(26px,3.4vw,44px)]">
-          {PROJECTS.map((project) => (
-            <Reveal key={project.title}>
-              <WorkCard project={project} />
-            </Reveal>
-          ))}
-        </div>
+        {posts.length === 0 ? (
+          <p className="font-mono text-[13px] uppercase tracking-[0.1em] text-mono-muted">
+            No posts yet — check back soon.
+          </p>
+        ) : (
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(26px,3.4vw,44px)]">
+            {posts.map((post, i) => (
+              <Reveal key={post._id}>
+                <PostCard post={post} index={i} />
+              </Reveal>
+            ))}
+          </div>
+        )}
       </Container>
     </section>
   );

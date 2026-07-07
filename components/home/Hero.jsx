@@ -18,27 +18,29 @@ export default function Hero() {
       <div className="absolute -top-[110px] right-[74px] z-0 h-[380px] w-[48px] origin-top rotate-45 bg-lime" />
 
       <Container className="relative z-[1] flex flex-wrap items-center gap-[clamp(28px,5vw,60px)] pb-[clamp(64px,8vw,104px)] pt-[clamp(48px,7vw,92px)]">
-        <div className="min-w-[300px] flex-[1_1_440px]">
+        <div className="relative z-[2] min-w-[300px] flex-[1_1_440px]">
           <h1 className="animate-rise text-hero tracking-[0.01em] [animation-delay:120ms]">
-            I build
+            Frictionless
             <br />
-            what you
+            systems,
             <br />
-            actually{" "}
+            real{" "}
             <span className="inline-block rotate-[-2.5deg] bg-lime px-[0.12em] text-ink shadow-[5px_5px_0_var(--ink)]">
-              need
+              impact
             </span>
           </h1>
 
           <p className="animate-rise mt-[26px] max-w-[470px] text-[clamp(15px,1.7vw,18px)] leading-[1.55] text-text-muted [animation-delay:200ms]">
-            I&apos;m a software engineer building the data pipelines and
-            annotation systems that keep AI products running cleanly. Web
-            development is my side gig — same rigor, smaller canvas.
+            I&apos;m an Implementations engineer building the
+            pipelines that move hundreds of millions of assets across the
+            globe. When I&apos;m not buried in semicolons and curly brackets,
+            I build production-grade web solutions for small businesses,
+            built to run lean on tight budgets.
           </p>
 
           <div className="animate-rise mt-8 flex flex-wrap gap-[14px] [animation-delay:280ms]">
-            <Button href="#contact" variant="primary" arrow>
-              Reach out to me
+            <Button href="#work" variant="primary" arrow>
+              My work
             </Button>
             <Button href="#contact" variant="secondary">
               Collaborate
@@ -47,8 +49,8 @@ export default function Hero() {
         </div>
 
         {/* Portrait cut-out: transparent PNG with a paper edge + drop shadow. */}
-        <div className="animate-rise relative min-h-[clamp(420px,44vw,560px)] min-w-[300px] flex-[1_1_340px] [animation-delay:340ms]">
-          <div className="absolute bottom-0 left-1/2 h-[clamp(390px,50vw,560px)] w-[clamp(300px,38vw,440px)] -translate-x-1/2">
+        <div className="animate-rise relative z-[1] min-h-[clamp(420px,44vw,560px)] min-w-[300px] flex-[1_1_340px] [animation-delay:340ms]">
+          <div className="absolute bottom-0 left-1/2 h-[clamp(390px,50vw,560px)] w-[clamp(300px,38vw,440px)] -translate-x-1/2 -translate-y-[10%] md:translate-y-0">
             <Image
               src="/hero-portrait.png"
               alt="Portrait of Naveena Pius"

@@ -9,7 +9,7 @@ import Marquee from "@/components/ui/Marquee";
 
 const TECH = [
   "NEXT.JS", "REACT", "TAILWIND", "NODE", "PYTHON",
-  "GCP", "AWS", "SANITY", "PREFECT", "VERCEL",
+  "GCP", "AWS", "SANITY", "PREFECT",
 ];
 
 const APPROACH = ["SCOPE", "ARCHITECT", "SHIP", "LISTEN", "BUILD"];

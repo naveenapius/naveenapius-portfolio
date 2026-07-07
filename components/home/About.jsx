@@ -18,7 +18,7 @@ export default function About() {
 
           <div className="min-w-[300px] flex-[1_1_440px] self-center">
             <p className="mb-[22px] text-[clamp(16px,1.8vw,19px)] leading-[1.65] text-text-body">
-              I work at the intersection of complex systems and human needs —
+              I work at the intersection of complex systems and human needs,
               figuring out exactly what&apos;s required, then building precisely
               that. By day I work on data pipelines and annotation systems that
               keep AI products running cleanly. On the side I build websites for
@@ -26,13 +26,17 @@ export default function About() {
             </p>
             <p className="text-[clamp(16px,1.8vw,19px)] leading-[1.65] text-text-body">
               I&apos;m also deeply embedded in the motorsports world as a
-              content creator — which is how I ended up building{" "}
-              <span className="bg-lime-light px-[0.14em] font-bold">
-                Enduro Edge
-              </span>
+              content creator, which is how I ended up building{" "}
+              <a
+                href="https://www.enduroedge.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-lime-light px-[0.14em] font-bold no-underline"
+              >
+                Enduro Edge <span aria-hidden="true">↗</span>
+              </a>
               , a live booking and lead-generation platform for an off-road
-              events company. I don&apos;t just build for industries I
-              understand. I build from inside them.
+              events company. I don&apos;t just build for industries, I understand and build from within them.
             </p>
           </div>
         </Reveal>

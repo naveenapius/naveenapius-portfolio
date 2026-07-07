@@ -75,12 +75,25 @@ export default function Button({
   children,
 }) {
   const s = SHADOW[shadow ?? VARIANT_SHADOW[variant]];
+  const classes = `inline-flex items-center gap-[9px] rounded px-6 py-4 font-mono text-[12.5px] font-semibold uppercase tracking-[0.06em] no-underline ${VARIANTS[variant]} ${s.base} ${s.hover} ${INTERACTION} ${className}`;
+
+  // Same-page anchors (e.g. "#work") are left to the browser's native
+  // fragment scroll. next/link's Link intercepts the click as a client-side
+  // navigation, and when it decides the target URL matches what it already
+  // thinks is current (easy to happen after scrolling around the page
+  // without the hash updating), it skips the scroll — the button appears to
+  // do nothing. A plain <a> always jumps to the id.
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} className={classes}>
+        {children}
+        {arrow && <span className="text-[15px]">→</span>}
+      </a>
+    );
+  }
 
   return (
-    <Link
-      href={href}
-      className={`inline-flex items-center gap-[9px] rounded px-6 py-4 font-mono text-[12.5px] font-semibold uppercase tracking-[0.06em] no-underline ${VARIANTS[variant]} ${s.base} ${s.hover} ${INTERACTION} ${className}`}
-    >
+    <Link href={href} className={classes}>
       {children}
       {arrow && <span className="text-[15px]">→</span>}
     </Link>

@@ -18,7 +18,7 @@ const NAV = [
 const linkBase =
   "font-mono text-[11.5px] font-semibold uppercase tracking-[0.14em] no-underline transition-colors hover:text-lime-text";
 const pillClass = `${linkBase} inline-flex items-center gap-[7px] rounded bg-lime px-[14px] py-[9px] text-ink shadow-[3px_3px_0_var(--ink)] hover:text-ink transition-all duration-150 ease-out hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0_var(--ink)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none`;
-const contactClass = `${linkBase} inline-flex items-center gap-[8px] rounded bg-ink px-[14px] py-[9px] text-paper hover:text-paper`;
+const contactClass = `${linkBase} inline-flex items-center gap-[8px] rounded bg-ink px-[14px] py-[9px] text-paper shadow-[3px_3px_0_var(--lime)] hover:text-paper transition-all duration-150 ease-out hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0_var(--lime)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none`;
 
 /**
  * The highlighted lime cross-site pill. It points at the "other side" of the
@@ -54,6 +54,16 @@ export default function Header() {
   const isActive = (match) => match && pathname.startsWith(match);
   const close = () => setOpen(false);
 
+  // Clicking the logo while already on "/" is a same-route Link to Next's
+  // router, so it no-ops instead of scrolling — do that scroll ourselves.
+  const goHome = (e) => {
+    close();
+    if (isHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   // Close the mobile menu on Escape.
   useEffect(() => {
     if (!open) return;
@@ -67,7 +77,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-[var(--container)] items-center justify-between gap-[18px] px-[var(--gutter)] py-[14px]">
         <Link
           href="/"
-          onClick={close}
+          onClick={goHome}
           className="font-mono text-[14px] font-bold leading-none tracking-[0.06em] text-ink no-underline"
         >
           NAVEENA&nbsp;PIUS
@@ -75,19 +85,25 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-[clamp(14px,2.2vw,30px)] md:flex">
-          {NAV.map(({ label, href, match }) => {
-            if (label === "MEDIA" && (isHome || isMedia))
-              return <CrossPill key={label} toDev={isMedia} />;
-            return (
-              <Link
-                key={label}
-                href={href}
-                className={`${linkBase} ${isActive(match) ? "text-lime-text" : "text-ink"}`}
-              >
-                {label}
-              </Link>
-            );
-          })}
+          {NAV.filter(({ label }) => label !== "MEDIA").map(({ label, href, match }) => (
+            <Link
+              key={label}
+              href={href}
+              className={`${linkBase} ${isActive(match) ? "text-lime-text" : "text-ink"}`}
+            >
+              {label}
+            </Link>
+          ))}
+          {isHome || isMedia ? (
+            <CrossPill toDev={isMedia} />
+          ) : (
+            <Link
+              href="/media"
+              className={`${linkBase} text-ink`}
+            >
+              MEDIA
+            </Link>
+          )}
           <Link href="/#contact" className={contactClass}>
             CONTACT
           </Link>
