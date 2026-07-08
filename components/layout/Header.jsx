@@ -15,6 +15,14 @@ const NAV = [
   { label: "WRITING", href: "/blog", match: "/blog" },
 ];
 
+// The media page has its own sections in place of WORK/SKILLS — STATS and
+// HIGHLIGHTS (the reel showcase) — but keeps WRITING from the shared NAV.
+const MEDIA_NAV = [
+  { label: "STATS", href: "#stats" },
+  { label: "HIGHLIGHTS", href: "#reels" },
+  ...NAV.filter(({ label }) => label === "WRITING"),
+];
+
 const linkBase =
   "font-mono text-[11.5px] font-semibold uppercase tracking-[0.14em] no-underline transition-colors hover:text-lime-text";
 const pillClass = `${linkBase} inline-flex items-center gap-[7px] rounded bg-lime px-[14px] py-[9px] text-ink shadow-[3px_3px_0_var(--ink)] hover:text-ink transition-all duration-150 ease-out hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0_var(--ink)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none`;
@@ -54,6 +62,15 @@ export default function Header() {
   const isActive = (match) => match && pathname.startsWith(match);
   const close = () => setOpen(false);
 
+  // MEDIA is always dropped from this list — it's rendered separately as the
+  // cross-site pill/link below.
+  const navItems = isMedia
+    ? MEDIA_NAV
+    : NAV.filter(({ label }) => label !== "MEDIA");
+
+  // The media page has its own collab section instead of the homepage contact.
+  const contactHref = isMedia ? "#collab" : "/#contact";
+
   // Clicking the logo while already on "/" is a same-route Link to Next's
   // router, so it no-ops instead of scrolling — do that scroll ourselves.
   const goHome = (e) => {
@@ -85,7 +102,7 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-[clamp(14px,2.2vw,30px)] md:flex">
-          {NAV.filter(({ label }) => label !== "MEDIA").map(({ label, href, match }) => (
+          {navItems.map(({ label, href, match }) => (
             <Link
               key={label}
               href={href}
@@ -104,7 +121,7 @@ export default function Header() {
               MEDIA
             </Link>
           )}
-          <Link href="/#contact" className={contactClass}>
+          <Link href={contactHref} className={contactClass}>
             CONTACT
           </Link>
         </nav>
@@ -154,7 +171,7 @@ export default function Header() {
           className="border-t-2 border-ink bg-paper md:hidden"
         >
           <div className="mx-auto flex max-w-[var(--container)] flex-col px-[var(--gutter)] py-2">
-            {NAV.filter((n) => n.label !== "MEDIA").map(({ label, href, match }) => (
+            {navItems.map(({ label, href, match }) => (
               <Link
                 key={label}
                 href={href}
@@ -167,7 +184,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/#contact"
+              href={contactHref}
               onClick={close}
               className={`${contactClass} mt-4 justify-center py-4 text-[13px]`}
             >

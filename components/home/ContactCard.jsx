@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { isExternalHref, externalLinkProps } from "@/lib/links";
 
 /**
  * Contact card with a mono "// LABEL" marker and a list of channel links.
@@ -49,6 +50,7 @@ export default function ContactCard({ accent, label, description, links, id }) {
           <Link
             key={link.label}
             href={link.href}
+            {...(isExternalHref(link.href) ? externalLinkProps : {})}
             className="flex items-center justify-between gap-[12px] border-t border-ink/10 px-[2px] py-[14px] font-mono text-[13px] font-semibold no-underline"
           >
             <span>

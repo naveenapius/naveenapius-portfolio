@@ -39,7 +39,7 @@ export default function MediaHero() {
           </p>
 
           <div className="animate-rise mt-8 flex flex-wrap gap-[14px] [animation-delay:280ms]">
-            <Button href="/#collaborate" variant="primary" arrow>
+            <Button href="#collab" variant="primary" arrow>
               Let&apos;s collaborate
             </Button>
             <Button

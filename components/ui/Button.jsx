@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { isExternalHref, externalLinkProps } from "@/lib/links";
 
 /**
  * Mono uppercase CTA with the site's signature hard offset shadow and motion.
@@ -86,6 +87,15 @@ export default function Button({
   if (href.startsWith("#")) {
     return (
       <a href={href} className={classes}>
+        {children}
+        {arrow && <span className="text-[15px]">→</span>}
+      </a>
+    );
+  }
+
+  if (isExternalHref(href)) {
+    return (
+      <a href={href} className={classes} {...externalLinkProps}>
         {children}
         {arrow && <span className="text-[15px]">→</span>}
       </a>
