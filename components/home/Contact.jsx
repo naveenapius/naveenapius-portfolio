@@ -1,7 +1,7 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import ContactCard from "@/components/home/ContactCard";
-import { EMAIL, SOCIAL, mailto } from "@/lib/contact";
+import { EMAIL, SOCIAL, RESUME_URL, mailto } from "@/lib/contact";
 
 export default function Contact() {
   return (
@@ -22,6 +22,7 @@ export default function Contact() {
             description="Open to freelance projects and full-time roles."
             links={[
               { label: "Email", href: mailto(EMAIL.work) },
+              { label: "Resume", href: RESUME_URL, external: true },
               { label: "LinkedIn", href: SOCIAL.linkedin.url },
               { label: "GitHub", href: SOCIAL.github.url },
             ]}

@@ -20,22 +20,21 @@ export default function Hero() {
       <Container className="relative z-[1] flex flex-wrap items-center gap-[clamp(28px,5vw,60px)] pb-[clamp(64px,8vw,104px)] pt-[clamp(48px,7vw,92px)]">
         <div className="relative z-[2] min-w-[300px] flex-[1_1_440px]">
           <h1 className="animate-rise text-hero tracking-[0.01em] [animation-delay:120ms]">
-            Minimum
+            BUILDING PIPELINES FOR
             <br />
-            Friction,
-            <br />
-            Maximum{" "}
+            AI IN{" "}
             <span className="inline-block rotate-[-2.5deg] bg-lime px-[0.12em] text-ink shadow-[5px_5px_0_var(--ink)]">
-              Impact
+              PRODUCTION
             </span>
           </h1>
 
           <p className="animate-rise mt-[26px] max-w-[470px] text-[clamp(15px,1.7vw,18px)] leading-[1.55] text-text-muted [animation-delay:200ms]">
-            I&apos;m an Implementations engineer building the
-            pipelines that move hundreds of millions of assets across the
-            globe. When I&apos;m not buried in semicolons and curly brackets,
-            I build production-grade web solutions for small businesses,
-            built to run lean
+            I&apos;m a Solutions Engineer building the pipelines that
+            move hundreds of millions of assets for cutting-edge AI models
+            across automotive, retail, and consumer tech. <br></br>
+            When I&apos;m not
+            buried in semicolons and curly brackets, I build production-grade
+            web solutions for small businesses, lean by design.
           </p>
 
           <div className="animate-rise mt-8 flex flex-wrap gap-[14px] [animation-delay:280ms]">
@@ -43,7 +42,7 @@ export default function Hero() {
               My work
             </Button>
             <Button href="#contact" variant="secondary">
-              Collaborate
+              Contact
             </Button>
           </div>
         </div>
