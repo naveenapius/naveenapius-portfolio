@@ -26,7 +26,7 @@ export default function About() {
             </p>
             <p className="text-[clamp(16px,1.8vw,19px)] leading-[1.65] text-text-body">
               I&apos;m also deeply embedded in the motorsports world as a
-              content creator, which is how I ended up building{" "}
+              content creator and rider, which is how I built a live booking and leads website for{" "}
               <a
                 href="https://www.enduroedge.in"
                 target="_blank"
@@ -35,7 +35,7 @@ export default function About() {
               >
                 Enduro Edge <span aria-hidden="true">↗</span>
               </a>
-              , a live booking and lead-generation platform for an off-road
+              , an off-road
               events company. I don&apos;t just build for industries, I understand and build from within them.
             </p>
           </div>
