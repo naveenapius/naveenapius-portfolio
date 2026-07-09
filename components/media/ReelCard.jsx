@@ -11,14 +11,18 @@ import { isExternalHref, externalLinkProps } from "@/lib/links";
  *
  * Sound is coordinated by the parent grid so only one reel plays audio at a
  * time — `muted` reflects that shared state, `onToggleSound` requests it.
+ * The card also watches its own visibility and calls `onLeaveViewport` once
+ * it scrolls fully out of view, so sound never keeps playing off-screen.
  *
  * @param {{ title?: string, video: string, views: string, likes: string, link: string }} reel
  * @param {boolean} muted
  * @param {() => void} onToggleSound
+ * @param {() => void} onLeaveViewport
  */
-export default function ReelCard({ reel, muted, onToggleSound }) {
+export default function ReelCard({ reel, muted, onToggleSound, onLeaveViewport }) {
   const { title, video, views, likes, link } = reel;
   const videoRef = useRef(null);
+  const frameRef = useRef(null);
 
   // Drive the element's muted state from the shared control. Setting the DOM
   // property (rather than the React attribute, which is unreliable for muted)
@@ -31,9 +35,25 @@ export default function ReelCard({ reel, muted, onToggleSound }) {
     if (!muted) el.play?.().catch(() => {});
   }, [muted]);
 
+  // Mute (if active) the moment this card's video is fully out of view —
+  // covers the desktop row leaving as a unit and, on mobile's single-column
+  // stack, each card leaving independently.
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) onLeaveViewport?.();
+      },
+      { threshold: 0 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [onLeaveViewport]);
+
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-[8px] border-2 border-ink bg-paper shadow-[7px_7px_0_var(--ink)] transition duration-200 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[7px_7px_0_var(--lime)]">
-      <div className="relative aspect-[9/16] border-b-2 border-ink">
+      <div ref={frameRef} className="relative aspect-[9/16] border-b-2 border-ink">
         <video
           ref={videoRef}
           src={video}

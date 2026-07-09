@@ -1,4 +1,5 @@
 import { Allerta_Stencil, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import ClickSoundListener from "@/components/ui/ClickSoundListener";
 import "./globals.css";
 
 // Display / wordmark — stencil headings (single weight).
@@ -34,7 +35,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${allertaStencil.variable} ${geistMono.variable} ${jetBrainsMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ClickSoundListener />
+        {children}
+      </body>
     </html>
   );
 }

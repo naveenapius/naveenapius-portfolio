@@ -7,12 +7,12 @@ import Reveal from "@/components/ui/Reveal";
  */
 const ROW_ONE = [
   { value: "100K+", label: "Avg. reel views" },
-  { value: "14.2K", label: "Followers" },
+  { value: "14.4K", label: "Followers" },
   { value: "2+ Yrs", label: "Creating" },
 ];
 
 const ROW_TWO = [
-  { value: "30,000+", label: "km total on the dash" },
+  { value: "32,000+", label: "km total on the dash" },
   { value: "6,000+", label: "km Ladakh ride" },
   { value: "50+", label: "Rides completed" },
 ];

@@ -2,11 +2,10 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import InstagramIcon from "@/components/ui/InstagramIcon";
-import { SOCIAL } from "@/lib/contact";
 
 /**
  * Media landing hero: stencil headline with a lime highlight word, intro, two
- * CTAs (collaborate + Instagram), and a 4:5 ride photo. Signature diamonds
+ * CTAs (collaborate + highlights), and a 4:5 ride photo. Signature diamonds
  * bleed off the top-right over a faint ink grid — mirrors the homepage hero.
  */
 export default function MediaHero() {
@@ -42,13 +41,9 @@ export default function MediaHero() {
             <Button href="#collab" variant="primary" arrow>
               Let&apos;s collaborate
             </Button>
-            <Button
-              href={SOCIAL.instagram.url}
-              variant="secondary"
-              shadow="pink"
-            >
+            <Button href="#reels" variant="secondary" shadow="pink">
               <InstagramIcon />
-              {SOCIAL.instagram.handle}
+              Highlights
             </Button>
           </div>
         </div>
