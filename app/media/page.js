@@ -11,9 +11,10 @@ const RIDE_THEMES = [
   "RIDE VLOGS",
   "GEAR REVIEWS",
   "RIDING TIPS",
-  "TRAIL & TOUR",
+  "TOURING",
   "LADAKH",
   "OFF-ROAD",
+  "TECHNIQUES"
 ];
 
 export const metadata = {

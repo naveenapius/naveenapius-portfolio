@@ -27,10 +27,12 @@ export default function MediaFeature() {
               Substance over spectacle
             </h2>
             <p className="text-[clamp(16px,1.8vw,19px)] leading-[1.65] text-text-body">
-              Ride vlogs, short-form reels, and real-world riding tips — built
-              for riders who want substance over spectacle. The photography
-              speaks for itself; what a brand gets is honest, well-produced
-              content that real riders actually watch and trust.
+              My format is focused on bringing genuine riding stories and learnings to every viewer. Built
+              for riders who want substance over spectacle. The goal has always been to engage with 
+              the real riding community, where engines, kilometers, and trust take priority over virality.
+              <br></br>
+              The engagement speaks for itself, most of my comment sections
+              are filled with discussions and shared experiences.
             </p>
           </div>
         </Reveal>

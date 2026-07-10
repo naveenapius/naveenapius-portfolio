@@ -21,22 +21,18 @@ export default function MediaHero() {
       <Container className="relative z-[1] flex flex-wrap items-center gap-[clamp(28px,5vw,60px)] pb-[clamp(64px,8vw,104px)] pt-[clamp(48px,7vw,92px)]">
         <div className="min-w-[300px] flex-[1_1_460px]">
           <h1 className="animate-rise text-[clamp(38px,5.6vw,70px)] leading-[1.08] tracking-[0.01em] [animation-delay:120ms]">
-            Making
-            <br />
-            motorcycling
+            Gathering
             <br />
             <span className="mb-[10px] inline-block rotate-[-2.5deg] bg-lime px-[0.12em] text-ink shadow-[5px_5px_0_var(--ink)]">
-              accessible
+              memories
             </span>
             <br />
             one ride at a time
           </h1>
 
           <p className="animate-rise mt-[30px] max-w-[480px] text-[clamp(15px,1.7vw,18px)] leading-[1.55] text-text-muted [animation-delay:200ms]">
-            Rides, reviews, and real-world riding tips — built for riders who
-            want substance over spectacle.
+            I ride my bike, Toothless, everywhere I can and share my experiences with my audience
           </p>
-
           <div className="animate-rise mt-8 flex flex-wrap gap-[14px] [animation-delay:280ms]">
             <Button href="#collab" variant="primary" arrow>
               Let&apos;s collaborate

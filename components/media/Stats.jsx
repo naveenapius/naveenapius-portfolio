@@ -13,7 +13,7 @@ const ROW_ONE = [
 
 const ROW_TWO = [
   { value: "32,000+", label: "km total on the dash" },
-  { value: "6,000+", label: "km Ladakh ride" },
+  { value: "6,000+", label: "km journey to Ladakh" },
   { value: "50+", label: "Rides completed" },
 ];
 
