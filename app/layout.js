@@ -1,4 +1,4 @@
-import { Allerta_Stencil, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import { Allerta_Stencil, Spectral, JetBrains_Mono } from "next/font/google";
 import ClickSoundListener from "@/components/ui/ClickSoundListener";
 import "./globals.css";
 
@@ -11,9 +11,10 @@ const allertaStencil = Allerta_Stencil({
 });
 
 // Body + card/article titles.
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spectral = Spectral({
+  variable: "--font-spectral",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -33,7 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${allertaStencil.variable} ${geistMono.variable} ${jetBrainsMono.variable} h-full`}
+      className={`${allertaStencil.variable} ${spectral.variable} ${jetBrainsMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
         <ClickSoundListener />
