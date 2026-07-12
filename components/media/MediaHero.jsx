@@ -31,7 +31,7 @@ export default function MediaHero() {
           </h1>
 
           <p className="animate-rise mt-[30px] max-w-[480px] text-[clamp(15px,1.7vw,18px)] leading-[1.55] text-text-muted [animation-delay:200ms]">
-          I'm a 23 year old rider based in Kochi. On the weekdays I peer over code, by weekends I'm off on my next adventure with my bike, Toothless.
+          I&apos;m a 23 year old rider based in Kochi. On the weekdays I peer over code, by weekends I&apos;m off on my next adventure with my bike, Toothless.
           <br></br>
           My journeys have taken me through all kinds of terrain, from the coasts of South India, the twisties of the Western Ghats, the waterfalls of Maharashtra,
           and the mountains of the Himalayas. No adventure feels too big, with Toothless by my side.

@@ -19,7 +19,7 @@ export default function About() {
           <div className="min-w-[300px] flex-[1_1_440px] self-center">
             <p className="mb-[22px] text-[clamp(16px,1.8vw,19px)] leading-[1.65] text-text-body">
               I work at the intersection of complex systems and human needs,
-              figuring out and building exactly what's needed. By day I work on data pipelines and annotation systems that
+              figuring out and building exactly what&apos;s needed. By day I work on data pipelines and annotation systems that
               keep AI products running cleanly. On the side I build websites for
               businesses that need a technical partner who actually listens.
             </p>

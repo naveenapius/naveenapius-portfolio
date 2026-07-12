@@ -77,7 +77,14 @@ export default {
     const fileResp = await fetch(downloadUrl, { headers: upstreamHeaders });
 
     const respHeaders = new Headers(fileResp.headers);
-    respHeaders.set("Cache-Control", "public, max-age=31536000, immutable");
+    // Long-cache only successful file responses (200 full, 206 partial).
+    // Errors (404s etc.) must stay uncached so a later upload/fix is picked
+    // up immediately instead of browsers holding the failure for a year.
+    if (fileResp.status === 200 || fileResp.status === 206) {
+      respHeaders.set("Cache-Control", "public, max-age=31536000, immutable");
+    } else {
+      respHeaders.set("Cache-Control", "no-store");
+    }
     respHeaders.set("Access-Control-Allow-Origin", "*");
 
     const response = new Response(fileResp.body, {
