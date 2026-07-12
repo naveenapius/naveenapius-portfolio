@@ -23,7 +23,8 @@ export default function Contact() {
             links={[
               { label: "Email", href: mailto(EMAIL.work) },
               { label: "Resume", href: RESUME_URL, external: true },
-              { label: "LinkedIn", href: SOCIAL.linkedin.url },
+              { label: "LinkedIn", href: SOCIAL.linkedin.url, external: true },
+              { label: "Medium Blog", href: SOCIAL.medium.url, external: true },
             ]}
           />
           <ContactCard
@@ -33,7 +34,7 @@ export default function Contact() {
             description="Open to brand collaborations and content partnerships."
             links={[
               { label: "Email", href: mailto(EMAIL.media) },
-              { label: "Instagram", href: SOCIAL.instagram.url },
+              { label: "Instagram", href: SOCIAL.instagram.url, external: true },
               { label: "Learn more", href: "/media", external: true },
             ]}
           />

@@ -3,7 +3,6 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import About from "@/components/home/About";
 import Skills from "@/components/home/Skills";
-import Work from "@/components/home/Work";
 import Contact from "@/components/home/Contact";
 import Marquee from "@/components/ui/Marquee";
 
@@ -23,7 +22,6 @@ export default function Home() {
         <Marquee items={TECH} />
         <About />
         <Skills />
-        <Work />
         <Marquee items={APPROACH} speed="fast" wide />
         <Contact />
       </main>

@@ -3,16 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { isExternalHref, externalLinkProps } from "@/lib/links";
+import { SOCIAL } from "@/lib/contact";
+
+// The blog lives on Medium; every BLOG nav item opens it in a new tab.
+const BLOG_URL = SOCIAL.medium.url;
 
 /**
  * Site nav — canonical order per DESIGN.md §5.
  * `match` decides which route lights up the item as active.
  */
 const NAV = [
-  { label: "WORK", href: "/#work" },
   { label: "SKILLS", href: "/#skills" },
   { label: "MEDIA", href: "/media", match: "/media" },
-  { label: "BLOG", href: "/blog", match: "/blog" },
+  { label: "BLOG", href: BLOG_URL },
 ];
 
 // The media page has its own sections in place of WORK/SKILLS — STATS and
@@ -24,11 +28,10 @@ const MEDIA_NAV = [
 ];
 
 // Blog pages drop SKILLS and show MEDIA inline (in nav order) instead of via
-// the separate cross-site pill/link — the header there is WORK/MEDIA/BLOG only.
+// the separate cross-site pill/link — the header there is MEDIA/BLOG only.
 const BLOG_NAV = [
-  { label: "WORK", href: "/#work" },
   { label: "MEDIA", href: "/media", match: "/media" },
-  { label: "BLOG", href: "/blog", match: "/blog" },
+  { label: "BLOG", href: BLOG_URL },
 ];
 
 const linkBase =
@@ -113,15 +116,26 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-[clamp(14px,2.2vw,30px)] md:flex">
-          {navItems.map(({ label, href, match }) => (
-            <Link
-              key={label}
-              href={href}
-              className={`${linkBase} ${isActive(match) ? "text-lime-text" : "text-ink"}`}
-            >
-              {label}
-            </Link>
-          ))}
+          {navItems.map(({ label, href, match }) =>
+            isExternalHref(href) ? (
+              <a
+                key={label}
+                href={href}
+                {...externalLinkProps}
+                className={`${linkBase} text-ink`}
+              >
+                {label}
+              </a>
+            ) : (
+              <Link
+                key={label}
+                href={href}
+                className={`${linkBase} ${isActive(match) ? "text-lime-text" : "text-ink"}`}
+              >
+                {label}
+              </Link>
+            ),
+          )}
           {!isBlog &&
             (isHome || isMedia ? (
               <CrossPill toDev={isMedia} />
@@ -180,18 +194,32 @@ export default function Header() {
           className="border-t-2 border-ink bg-paper md:hidden"
         >
           <div className="mx-auto flex max-w-[var(--container)] flex-col px-[var(--gutter)] py-2">
-            {navItems.map(({ label, href, match }) => (
-              <Link
-                key={label}
-                href={href}
-                onClick={close}
-                className={`border-b border-ink/10 py-4 font-mono text-[13px] font-semibold uppercase tracking-[0.14em] no-underline ${
-                  isActive(match) ? "text-lime-text" : "text-ink"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+            {navItems.map(({ label, href, match }) => {
+              const cls =
+                "border-b border-ink/10 py-4 font-mono text-[13px] font-semibold uppercase tracking-[0.14em] no-underline";
+              return isExternalHref(href) ? (
+                <a
+                  key={label}
+                  href={href}
+                  {...externalLinkProps}
+                  onClick={close}
+                  className={`${cls} text-ink`}
+                >
+                  {label}
+                </a>
+              ) : (
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={close}
+                  className={`${cls} ${
+                    isActive(match) ? "text-lime-text" : "text-ink"
+                  }`}
+                >
+                  {label}
+                </Link>
+              );
+            })}
             <Link
               href={contactHref}
               onClick={close}

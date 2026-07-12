@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { RESUME_URL } from "@/lib/contact";
 
 /**
  * Landing hero: stencil headline with a lime highlight word, intro, two CTAs,
@@ -38,8 +39,8 @@ export default function Hero() {
           </p>
 
           <div className="animate-rise mt-8 flex flex-wrap gap-[14px] [animation-delay:280ms]">
-            <Button href="#work" variant="primary" arrow>
-              My work
+            <Button href={RESUME_URL} variant="primary" arrow>
+              View my resume
             </Button>
             <Button href="#contact" variant="secondary">
               Contact
