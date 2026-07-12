@@ -12,15 +12,23 @@ const NAV = [
   { label: "WORK", href: "/#work" },
   { label: "SKILLS", href: "/#skills" },
   { label: "MEDIA", href: "/media", match: "/media" },
-  { label: "WRITING", href: "/blog", match: "/blog" },
+  { label: "BLOG", href: "/blog", match: "/blog" },
 ];
 
 // The media page has its own sections in place of WORK/SKILLS — STATS and
-// HIGHLIGHTS (the reel showcase) — but keeps WRITING from the shared NAV.
+// HIGHLIGHTS (the reel showcase) — but keeps BLOG from the shared NAV.
 const MEDIA_NAV = [
   { label: "STATS", href: "#stats" },
   { label: "HIGHLIGHTS", href: "#reels" },
-  ...NAV.filter(({ label }) => label === "WRITING"),
+  ...NAV.filter(({ label }) => label === "BLOG"),
+];
+
+// Blog pages drop SKILLS and show MEDIA inline (in nav order) instead of via
+// the separate cross-site pill/link — the header there is WORK/MEDIA/BLOG only.
+const BLOG_NAV = [
+  { label: "WORK", href: "/#work" },
+  { label: "MEDIA", href: "/media", match: "/media" },
+  { label: "BLOG", href: "/blog", match: "/blog" },
 ];
 
 const linkBase =
@@ -57,16 +65,19 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isMedia = pathname.startsWith("/media");
+  const isBlog = pathname.startsWith("/blog");
   const [open, setOpen] = useState(false);
 
   const isActive = (match) => match && pathname.startsWith(match);
   const close = () => setOpen(false);
 
-  // MEDIA is always dropped from this list — it's rendered separately as the
-  // cross-site pill/link below.
+  // MEDIA is dropped from this list on every page except blog — elsewhere
+  // it's rendered separately as the cross-site pill/link below.
   const navItems = isMedia
     ? MEDIA_NAV
-    : NAV.filter(({ label }) => label !== "MEDIA");
+    : isBlog
+      ? BLOG_NAV
+      : NAV.filter(({ label }) => label !== "MEDIA");
 
   // The media page has its own collab section instead of the homepage contact.
   const contactHref = isMedia ? "#collab" : "/#contact";
@@ -111,16 +122,14 @@ export default function Header() {
               {label}
             </Link>
           ))}
-          {isHome || isMedia ? (
-            <CrossPill toDev={isMedia} />
-          ) : (
-            <Link
-              href="/media"
-              className={`${linkBase} text-ink`}
-            >
-              MEDIA
-            </Link>
-          )}
+          {!isBlog &&
+            (isHome || isMedia ? (
+              <CrossPill toDev={isMedia} />
+            ) : (
+              <Link href="/media" className={`${linkBase} text-ink`}>
+                MEDIA
+              </Link>
+            ))}
           <Link href={contactHref} className={contactClass}>
             CONTACT
           </Link>
@@ -128,7 +137,7 @@ export default function Header() {
 
         {/* Mobile bar: keep the highlighted cross-site pill + a hamburger toggle */}
         <div className="flex items-center gap-3 md:hidden">
-          <CrossPill toDev={isMedia} onClick={close} />
+          {!isBlog && <CrossPill toDev={isMedia} onClick={close} />}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}

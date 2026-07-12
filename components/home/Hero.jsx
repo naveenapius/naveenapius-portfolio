@@ -27,9 +27,9 @@ export default function Hero() {
               PRODUCTION
             </span>
           </h1>
-
+          <br></br>
           <p className="animate-rise mt-[26px] max-w-[470px] text-[clamp(15px,1.7vw,18px)] leading-[1.55] text-text-muted [animation-delay:200ms]">
-            I&apos;m a Solutions Engineer building the pipelines that
+            I build the pipelines that
             move hundreds of millions of assets for cutting-edge AI models
             across automotive, retail, and consumer tech. <br></br>
             When I&apos;m not

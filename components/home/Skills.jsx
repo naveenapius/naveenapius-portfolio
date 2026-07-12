@@ -14,7 +14,7 @@ const GROUPS = [
   },
   {
     label: "WEB & FULL-STACK",
-    items: ["Next.js", "React", "Tailwind CSS", "Sanity", "NocoDB", "Razorpay", "Umami", "Upstash Redis", "ntfy", "Netlify"],
+    items: ["Next.js", "React", "Tailwind CSS", "Sanity", "NocoDB", "Razorpay", "Umami", "Upstash Redis", "ntfy", "Netlify", "Cloudflare Workers", "Backblaze B2"],
   },
   {
     label: "CI/CD & OBSERVABILITY",
