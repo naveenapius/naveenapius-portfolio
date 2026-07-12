@@ -1,0 +1,42 @@
+import Image from "next/image";
+import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
+
+/**
+ * "Substance over spectacle" — a wide 16:11 ride frame (lime offset shadow)
+ * beside a short positioning statement.
+ */
+export default function MediaFeature() {
+  return (
+    <section className="bg-paper">
+      <Container>
+        <Reveal className="flex flex-wrap items-stretch gap-[clamp(28px,5vw,60px)] py-[var(--section-y)]">
+          <div className="relative min-w-[300px] flex-[1_1_420px]">
+            <div className="relative aspect-[16/11] h-full w-full min-h-[clamp(300px,34vw,440px)] overflow-hidden rounded-[8px] border-2 border-ink shadow-[9px_9px_0_var(--lime)]">
+              <Image
+                src="/media-feature.jpg"
+                alt="Ride and trail photography"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="flex min-w-[280px] flex-[1_1_360px] flex-col justify-center">
+            <h2 className="mb-[22px] text-[clamp(30px,4.4vw,52px)] leading-[0.96]">
+              Substance over spectacle
+            </h2>
+            <p className="text-[clamp(16px,1.8vw,19px)] leading-[1.65] text-text-body">
+              My format is focused on bringing genuine riding stories and learnings to every viewer. Built
+              for riders who want substance over spectacle. The goal has always been to engage with 
+              the real riding community, where engines, kilometers, and trust take priority over virality.
+              <br></br>
+              The engagement speaks for itself, most of my comment sections
+              are filled with discussions and shared experiences.
+            </p>
+          </div>
+        </Reveal>
+      </Container>
+    </section>
+  );
+}

@@ -1,0 +1,17 @@
+# Netlify build configuration.
+# Netlify auto-detects Next.js and installs its Next.js runtime, but pinning
+# these here keeps production builds reproducible instead of drifting with
+# Netlify's rolling defaults.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# The official Next.js runtime — handles App Router, ISR, image optimization,
+# and route/function wiring on Netlify.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # Node 22 LTS — satisfies Next 16 and matches Netlify's current default.
+  NODE_VERSION = "22"
