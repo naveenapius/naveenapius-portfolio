@@ -6,7 +6,7 @@ import Tag from "@/components/ui/Tag";
 const GROUPS = [
   {
     label: "DATA & CLOUD",
-    items: ["Python", "Pandas", "NumPy", "JavaScript", "REST APIs", "Webhooks", "ETL", "AWS", "GCP", "Docker"],
+    items: ["Python", "Pandas", "NumPy", "JavaScript", "REST APIs", "Webhooks", "ETL", "AWS", "GCP", "Docker",  "Cloudflare Workers", "Backblaze B2"],
   },
   {
     label: "SYSTEMS & OS",
@@ -14,7 +14,7 @@ const GROUPS = [
   },
   {
     label: "WEB & FULL-STACK",
-    items: ["Next.js", "React", "Tailwind CSS", "Sanity", "NocoDB", "Razorpay", "Umami", "Upstash Redis", "ntfy", "Netlify", "Cloudflare Workers", "Backblaze B2"],
+    items: ["Next.js", "React", "Tailwind CSS", "Sanity", "NocoDB", "Razorpay", "Umami", "Upstash Redis", "ntfy", "Netlify"],
   },
   {
     label: "CI/CD & OBSERVABILITY",
