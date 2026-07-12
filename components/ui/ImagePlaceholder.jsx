@@ -8,7 +8,7 @@
  *
  * It fills its parent, so the parent controls size / aspect-ratio / borders.
  *
- * @param {string} filename - expected file in /public (e.g. "hero-portrait.png").
+ * @param {string} filename - expected file in /public (e.g. "hero-portrait.webp").
  * @param {string} label - short description of what the image is.
  */
 export default function ImagePlaceholder({ filename, label, className = "" }) {

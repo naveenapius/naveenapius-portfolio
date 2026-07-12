@@ -48,11 +48,11 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Portrait cut-out: transparent PNG with a paper edge + drop shadow. */}
+        {/* Portrait cut-out: transparent image with a paper edge + drop shadow. */}
         <div className="animate-rise relative z-[1] min-h-[clamp(420px,44vw,560px)] min-w-[300px] flex-[1_1_340px] [animation-delay:340ms]">
           <div className="absolute bottom-0 left-1/2 h-[clamp(390px,50vw,560px)] w-[clamp(300px,38vw,440px)] -translate-x-1/2 -translate-y-[10%] md:translate-y-0">
             <Image
-              src="/hero-portrait.png"
+              src="/hero-portrait.webp"
               alt="Portrait of Naveena Pius"
               fill
               priority

@@ -20,11 +20,10 @@ const NAV = [
 ];
 
 // The media page has its own sections in place of WORK/SKILLS — STATS and
-// HIGHLIGHTS (the reel showcase) — but keeps BLOG from the shared NAV.
+// HIGHLIGHTS (the reel showcase).
 const MEDIA_NAV = [
   { label: "STATS", href: "#stats" },
   { label: "HIGHLIGHTS", href: "#reels" },
-  ...NAV.filter(({ label }) => label === "BLOG"),
 ];
 
 // Blog pages drop SKILLS and show MEDIA inline (in nav order) instead of via
